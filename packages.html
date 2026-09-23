@@ -426,7 +426,7 @@
     .view-all-link:hover { color: #00ff96; }
 
     /* ── Always Included ── */
-    .always-included-section { padding-top: 3rem; }
+    .always-included-section, .ad-mgmt-section { padding-top: 3rem; }
     .always-included-static { display: grid; }
 
     /* ── Our Work ── */
@@ -576,7 +576,7 @@
       .pkg-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; margin-bottom: 0.5rem; }
       .pkg-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); transition: background 0.3s ease; cursor: pointer; }
       .pkg-dot.active { background: #00ff96; }
-      .always-included-section { padding-top: 2rem; }
+      .always-included-section, .ad-mgmt-section { padding-top: 2rem; }
       .always-included-track-wrap { overflow: hidden; position: relative; }
       .always-included-track-wrap::before, .always-included-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
       .always-included-track-wrap::before { left: 0; background: linear-gradient(to right, #000 0%, transparent 100%); }
@@ -1327,7 +1327,7 @@
   </section>
 
   <!-- Ad Management Pricing -->
-  <section class="container">
+  <section class="container ad-mgmt-section">
     <h2>Local Ads <span class="gradient-text">Management</span></h2>
     <p class="section-subtitle">We manage your Google Local Service Ads so you get more calls and leads. Ad spend is billed directly by Google — this is just our management fee.</p>
 

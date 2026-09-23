@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Internal Pricing — VAURA Digital</title>
+  <link rel="icon" type="image/png" href="../vaura favicon.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    @font-face {
+      font-family: 'HeliosExt';
+      src: url('../HeliosExt.woff') format('woff'), url('../HeliosExt.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'HeliosExt';
+      src: url('../HeliosExt-Bold.woff') format('woff'), url('../HeliosExt-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --brand-green: #00ff96;
+      --brand-cyan: #00ccff;
+      --shadow-hover-subtle: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      font-family: 'HeliosExt', 'Inter', system-ui, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.6;
+      background-image:
+        radial-gradient(ellipse 80% 40% at 20% 0%, rgba(0, 255, 150, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 30% at 80% 0%, rgba(200, 50, 255, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 40% at 80% 100%, rgba(0, 255, 150, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 30% at 20% 100%, rgba(0, 200, 255, 0.05) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Internal-only banner */
+    .internal-banner {
+      position: sticky; top: 0; z-index: 50;
+      padding: 0.9rem 1.5rem; text-align: center;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #000000;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-cyan));
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-cyan));
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; margin-bottom: 0.6rem;
+      text-align: center; letter-spacing: -0.02em; line-height: 1.2;
+    }
+    h3 { font-family: 'HeliosExt', 'Inter', sans-serif; }
+    .section-subtitle {
+      text-align: center; color: rgba(255,255,255,0.6); font-size: 0.95rem;
+      margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ── One-Time Design Packages ── */
+    .design-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .design-card {
+      padding: 2rem 1.5rem; border-radius: 1.5rem;
+      display: flex; flex-direction: column; transition: all 0.3s ease; position: relative;
+    }
+    .design-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
+    .design-card.featured { border: 2px solid rgba(0,255,150,0.5); }
+    .popular-badge {
+      display: none; position: absolute; top: 1rem; right: 1rem;
+      background: rgba(0,255,150,0.15); border: 1px solid rgba(0,255,150,0.4);
+      padding: 0.35rem 0.85rem; border-radius: 9999px;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #00ff96;
+    }
+    .design-card.featured .popular-badge { display: block; }
+    .design-tier { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.55); margin-bottom: 0.5rem; }
+    .design-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+    .design-price {
+      font-size: 2.5rem; font-weight: 700; margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-cyan));
+      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .design-price-note { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
+    .design-features { list-style: none; flex: 1; }
+    .design-features li {
+      padding: 0.6rem 0; padding-left: 1.4rem; position: relative;
+      color: rgba(255,255,255,0.7); font-size: 0.88rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .design-features li:before { content: '✓'; position: absolute; left: 0; color: #00ff96; font-weight: 700; }
+    .design-cta { margin-top: 1.5rem; }
+    .btn-primary, .btn-secondary {
+      display: block; width: 100%; padding: 0.9rem; border-radius: 1rem; text-align: center; border: none;
+      font-family: inherit; font-size: 0.95rem; cursor: pointer;
+      text-decoration: none; font-weight: 600; transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-cyan)); color: #000000;
+    }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,255,150,0.3); }
+
+    /* ── Comparison Table ── */
+    .comparison-section { margin-top: 3rem; padding-top: 3rem; border-top: 2px solid rgba(255,255,255,0.1); }
+    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+    .comparison-table th, .comparison-table td { padding: 1.1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .comparison-table th { background: rgba(255,255,255,0.05); font-weight: 700; font-size: 0.9rem; color: rgba(255,255,255,0.9); }
+    .comparison-table td { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .comparison-table .check { color: #00ccff; font-weight: 700; }
+    .comparison-table .check::first-letter { color: #00ff96; }
+
+    @media (max-width: 1024px) {
+      .design-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      section { padding: 2.5rem 0; }
+      .design-grid { grid-template-columns: 1fr; }
+      .internal-banner { font-size: 0.72rem; letter-spacing: 0.08em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="internal-banner" role="alert">INTERNAL ONLY — not for client distribution</div>
+
+  <section class="container">
+    <h1>Website Design <span class="gradient-text">Pricing</span></h1>
+    <p class="section-subtitle">Internal reference for sales calls. One-time investment — the client owns the site outright. All builds include mobile responsiveness, SSL, and 30 days of free support.</p>
+
+    <div class="design-grid">
+      <!-- Landing Page -->
+      <div class="design-card glass">
+        <div class="design-tier">Entry Level</div>
+        <div class="design-name">Landing Page</div>
+        <div class="design-price">$1,500</div>
+        <p class="design-price-note">one-time · you own it</p>
+        <ul class="design-features">
+          <li>Single-page design</li>
+          <li>Mobile responsive</li>
+          <li>Contact form + email</li>
+          <li>SSL & basic SEO</li>
+          <li>Google Analytics</li>
+          <li>30 days free support</li>
+        </ul>
+        <div class="design-cta">
+          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Starter -->
+      <div class="design-card glass">
+        <div class="design-tier">Starter</div>
+        <div class="design-name">Starter Site</div>
+        <div class="design-price">$3,500</div>
+        <p class="design-price-note">one-time · you own it</p>
+        <ul class="design-features">
+          <li>Up to 5 pages</li>
+          <li>Mobile responsive design</li>
+          <li>Basic SEO setup</li>
+          <li>Contact forms & email</li>
+          <li>Social media links</li>
+          <li>Google Analytics</li>
+          <li>30 days free support</li>
+        </ul>
+        <div class="design-cta">
+          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
+        </div>
+      </div>
+
+      <!-- Professional (Featured) -->
+      <div class="design-card glass featured">
+        <div class="popular-badge">POPULAR</div>
+        <div class="design-tier">Professional</div>
+        <div class="design-name">Professional Site</div>
+        <div class="design-price">$5,000</div>
+        <p class="design-price-note">one-time · you own it</p>
+        <ul class="design-features">
+          <li>Up to 10 pages</li>
+          <li>Fully custom bespoke design</li>
+          <li>Advanced SEO & copywriting</li>
+          <li>Blog / CMS included</li>
+          <li>E-commerce ready (up to 100 products)</li>
+          <li>Testimonial system</li>
+          <li>60 days free support</li>
+          <li>Performance optimization</li>
+        </ul>
+        <div class="design-cta">
+          <button class="btn-primary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Schedule Call</button>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="design-card glass">
+        <div class="design-tier">Enterprise</div>
+        <div class="design-name">Premium Site</div>
+        <div class="design-price">$10,000+</div>
+        <p class="design-price-note">custom scope · you own it</p>
+        <ul class="design-features">
+          <li>20+ pages, custom functionality</li>
+          <li>Bespoke UX & interactions</li>
+          <li>Advanced animations & effects</li>
+          <li>Full e-commerce integration</li>
+          <li>API integrations & custom tools</li>
+          <li>Membership / subscription systems</li>
+          <li>Priority support & quarterly reviews</li>
+          <li>Ongoing content updates included</li>
+        </ul>
+        <div class="design-cta">
+          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Let's Talk</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-section">
+      <h3 style="font-size: 1.5rem; text-align: left; margin-bottom: 2rem;">Detailed Comparison</h3>
+      <div style="overflow-x: auto;">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Landing Page</th>
+              <th>Starter</th>
+              <th>Professional</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              <td>$1,500</td>
+              <td>$3,500</td>
+              <td>$5,000</td>
+              <td>$10,000+</td>
+            </tr>
+            <tr>
+              <td>Number of Pages</td>
+              <td>1 page</td>
+              <td>Up to 5</td>
+              <td>Up to 10</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Custom Design</td>
+              <td>Template Based</td>
+              <td>Template Based</td>
+              <td class="check">✓ Full Custom</td>
+              <td class="check">✓ Bespoke</td>
+            </tr>
+            <tr>
+              <td>SEO Optimization</td>
+              <td>Basic</td>
+              <td>Basic</td>
+              <td class="check">✓ Advanced</td>
+              <td class="check">✓ Advanced</td>
+            </tr>
+            <tr>
+              <td>E-Commerce</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td class="check">✓ Up to 50 Products</td>
+              <td class="check">✓ Unlimited</td>
+            </tr>
+            <tr>
+              <td>Blog / CMS</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td class="check">✓ Included</td>
+              <td class="check">✓ Advanced</td>
+            </tr>
+            <tr>
+              <td>API Integration</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td>Basic</td>
+              <td class="check">✓ Full Integration</td>
+            </tr>
+            <tr>
+              <td>Animations & Effects</td>
+              <td>Not Included</td>
+              <td>Standard</td>
+              <td>Standard</td>
+              <td class="check">✓ Advanced</td>
+            </tr>
+            <tr>
+              <td>Membership / Subscriptions</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td class="check">✓ Included</td>
+            </tr>
+            <tr>
+              <td>Mobile Responsive</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>SSL & Security</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Google Analytics</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+              <td class="check">✓ Yes</td>
+            </tr>
+            <tr>
+              <td>Free Support After Launch</td>
+              <td>30 days</td>
+              <td>30 days</td>
+              <td>60 days</td>
+              <td>3 months</td>
+            </tr>
+            <tr>
+              <td>Revision Rounds</td>
+              <td>1</td>
+              <td>2</td>
+              <td>4</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Performance Optimization</td>
+              <td>Standard</td>
+              <td>Standard</td>
+              <td class="check">✓ Advanced</td>
+              <td class="check">✓ Premium</td>
+            </tr>
+            <tr>
+              <td>Priority Support</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td>Not Included</td>
+              <td class="check">✓ Included</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -628,12 +628,6 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .package-name {
-        font-size: 1.1rem;
-      }
-    }
-
     @media (min-width: 1200px) {
       .pkg-dots { display: none; }
     }
@@ -673,10 +667,12 @@
     }
 
     .package-name {
-      font-size: 1.5rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.5rem;
     }
 
     .package-price {
@@ -1253,6 +1249,7 @@
     <p class="section-subtitle">Choose your level of digital excellence</p>
     <div class="packages-grid">
       <div class="package-card glass">
+        <div class="package-name">Entry Level</div>
         <div class="package-price">Landing Page</div>
         <p class="package-period">one-time investment</p>
         <ul class="package-features">
@@ -1267,6 +1264,7 @@
       </div>
 
       <div class="package-card glass">
+        <div class="package-name">Starter</div>
         <div class="package-price">Starter</div>
         <p class="package-period">one-time investment</p>
         <ul class="package-features">
@@ -1282,6 +1280,7 @@
 
       <div class="package-card glass featured">
         <div class="popular-badge">POPULAR</div>
+        <div class="package-name">Professional</div>
         <div class="package-price">Professional</div>
         <p class="package-period">one-time investment</p>
         <ul class="package-features">
@@ -1297,6 +1296,7 @@
       </div>
 
       <div class="package-card glass">
+        <div class="package-name">Enterprise</div>
         <div class="package-price">Premium</div>
         <p class="package-period">custom scope</p>
         <ul class="package-features">

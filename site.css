@@ -76,8 +76,8 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-
 .layer-front svg{width:100%;height:100%;mix-blend-mode:screen}
 .layer-front path{fill:none;stroke-linecap:round}
 .layer-front .base{opacity:.22}
-.layer-front .pulse{stroke-dasharray:70 1930;animation:flow 14s linear infinite;opacity:.9}
-.layer-front .pulse:not(.core){opacity:.55}
+.layer-front .pulse{stroke-dasharray:90 1910;animation:flow 14s linear infinite;opacity:.95}
+.layer-front .pulse:not(.core){opacity:.7}
 @keyframes flow{from{stroke-dashoffset:2000}to{stroke-dashoffset:0}}
 .layer-mid{z-index:4;display:grid;place-items:center;text-align:center;padding:96px var(--pad) 80px}
 .hero-inner{max-width:900px}
@@ -96,7 +96,12 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-
 .rating-chip{display:inline-flex;gap:10px;align-items:center;text-decoration:none}
 .stars{color:#ffd56b;letter-spacing:.12em}
 .vtoggle{background:var(--glass);border:1px solid var(--line-2);color:var(--text);border-radius:999px;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.vtoggle svg{width:14px;height:14px}
+.vtoggle svg{width:10px;height:10px}
+.vtoggle{width:34px;height:34px;opacity:.38;background:transparent;border-color:var(--line);transition:opacity .3s,background .3s}
+.vtoggle:hover,.vtoggle:focus-visible{opacity:1;background:var(--glass)}
+.vtoggle::after{content:"";position:absolute;width:44px;height:44px}
+.vtoggle{position:relative}
+.hero-meta .scrollcue{position:absolute;left:50%;bottom:0}
 .scrollcue{width:1px;height:46px;background:linear-gradient(var(--text),transparent);animation:cue 2.4s ease-in-out infinite;transform-origin:top}
 @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 @media (max-width:640px){.hero-meta .scrollcue{display:none}}

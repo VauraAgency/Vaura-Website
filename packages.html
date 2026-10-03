@@ -1,1666 +1,343 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Packages & Management — VAURA Digital</title>
-  <meta name="description" content="Website design packages from VAURA — landing pages, multi-page sites, and premium custom builds. Compare pricing and features.">
-  <link rel="canonical" href="https://vauraagency.com/packages.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Website Packages & Management — VAURA Digital">
-  <meta property="og:description" content="Landing pages, multi-page sites, and premium custom builds. Compare VAURA's website packages.">
-  <meta property="og:url" content="https://vauraagency.com/packages.html">
-  <meta property="og:image" content="https://vauraagency.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Website Packages & Management — VAURA Digital">
-  <meta name="twitter:description" content="Landing pages, multi-page sites, and premium custom builds. Compare VAURA's website packages.">
-  <meta name="twitter:image" content="https://vauraagency.com/og-image.png">
-  <link rel="icon" type="image/png" href="vaura%20favicon.png?v=2">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-    @font-face {
-      font-family: 'HeliosExt';
-      src: url('HeliosExt.woff') format('woff'), url('HeliosExt.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-    }
-    @font-face {
-      font-family: 'HeliosExt';
-      src: url('HeliosExt-Bold.woff') format('woff'), url('HeliosExt-Bold.otf') format('opentype');
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-
-    /* ==================== Design Tokens (VAURA) ==================== */
-    :root {
-      /* color */
-      --bg-base: #000000;
-      --text-primary: #ffffff;
-      --text-secondary: rgba(255, 255, 255, 0.7);
-      --text-tertiary: rgba(255, 255, 255, 0.6);
-      --text-muted: rgba(255, 255, 255, 0.55); /* WCAG AA-safe minimum for meta/footer text */
-      --brand-green: #00ff96;
-      --brand-cyan: #00ccff;
-      --border-hairline: rgba(255, 255, 255, 0.05);
-      --border-glass: rgba(255, 255, 255, 0.18);
-      --border-glass-strong: rgba(255, 255, 255, 0.25);
-
-      /* spacing */
-      --space-xs: 0.5rem;
-      --space-sm: 0.75rem;
-      --space-md: 1rem;
-      --space-lg: 1.5rem;
-      --space-xl: 2rem;
-      --space-2xl: 3rem;
-      --space-3xl: 4rem;
-      --space-4xl: 5rem;
-
-      /* radius */
-      --radius-sm: 0.75rem;
-      --radius-md: 1rem;
-      --radius-lg: 1.5rem;
-      --radius-full: 9999px;
-      --radius-circle: 50%;
-
-      /* shadow */
-      --shadow-elevation-sm: 0 8px 24px rgba(0, 255, 150, 0.2);
-      --shadow-elevation-md: 0 10px 30px rgba(0, 255, 150, 0.3);
-      --shadow-elevation-lg: 0 20px 64px rgba(0, 255, 150, 0.15);
-      --shadow-elevation-neutral: 0 8px 32px rgba(0, 0, 0, 0.4);
-      --shadow-glow-ring: 0 0 32px rgba(0, 255, 150, 0.22);
-      /* Secondary hover: subtle, no colored glow (reserved for primary CTAs only) */
-      --shadow-hover-subtle: 0 6px 18px rgba(0, 0, 0, 0.5);
-
-      /* motion */
-      --transition-default: all 0.3s ease;
-    }
-
-    /* ==================== Accessibility: focus visibility ==================== */
-    a, button, input, textarea, select, [tabindex] {
-      outline: none;
-    }
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible,
-    [tabindex]:focus-visible,
-    .glass-button:focus-visible,
-    .mobile-menu-btn:focus-visible {
-      outline: 2px solid var(--brand-cyan);
-      outline-offset: 3px;
-      border-radius: var(--radius-sm);
-      box-shadow: 0 0 0 4px rgba(0, 204, 255, 0.25);
-    }
-
-    /* Minimum touch target size for controls (WCAG 2.5.5 / 44x44px) */
-    .mobile-menu-btn {
-      min-width: 44px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Respect reduced-motion preference: pause carousels & non-essential animation */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-    /* ==================== End Design Tokens / Accessibility ==================== */
-
-
-    body {
-      font-family: 'HeliosExt', 'Inter', system-ui, sans-serif;
-      background: #000000;
-      color: #ffffff;
-      line-height: 1.6;
-      background-image:
-        radial-gradient(ellipse 80% 40% at 20% 0%, rgba(0, 255, 150, 0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 30% at 80% 0%, rgba(200, 50, 255, 0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 40% at 80% 100%, rgba(0, 255, 150, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 30% at 20% 100%, rgba(0, 200, 255, 0.05) 0%, transparent 60%);
-      background-attachment: fixed;
-    }
-
-    .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .glass-button {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-      color: #ffffff;
-      text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
-      font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      border-radius: 1rem;
-      text-align: center;
-    }
-    .glass-button:hover {
-      background: rgba(255, 255, 255, 0.22);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 48px rgba(0, 255, 150, 0.2);
-    }
-    /* Nav Book a Call stays glass */
-    nav .glass-button {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(32px);
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #ffffff;
-      font-weight: 500;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
-    nav .glass-button:hover {
-      background: rgba(255,255,255,0.22);
-      box-shadow: 0 12px 48px rgba(0,255,150,0.2);
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 50;
-      backdrop-filter: blur(28px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1rem 0;
-    }
-    nav .container {
-      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
-    }
-    .logo { order: 1; flex-shrink: 0; }
-    .logo img { height: 40px; width: auto; display: block; }
-    .nav-spacer { flex: 1; order: 2; }
-    .nav-links {
-      display: flex; gap: 2rem; align-items: center;
-      list-style: none; justify-content: center; order: 3;
-    }
-    .nav-links a {
-      color: #ffffff; text-decoration: none;
-      font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease;
-    }
-    .nav-links a:hover { color: #00ff96; transform: translateY(-3px); }
-    .nav-links a.active { color: #00ccff; text-shadow: 0 0 12px rgba(0, 204, 255, 0.7); }
-    .mobile-menu-btn { display: none; background: none; border: none; color: #ffffff; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; order: 4; flex-shrink: 0; transition: all 0.3s ease; }
-    .mobile-menu-btn:hover { color: #00ff96; }
-    .mobile-menu-btn.active { color: #00ff96; }
-    #mobile-menu {
-      display: none !important; position: absolute; top: 100%;
-      left: 1.5rem; right: 1.5rem; margin-top: 0.5rem;
-      border-radius: 1.5rem; padding: 1.5rem; text-align: center;
-      flex-direction: column; gap: 1.5rem;
-      background: rgba(0, 0, 0, 0.97); backdrop-filter: blur(50px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-    #mobile-menu.visible { display: flex !important; }
-    #mobile-menu a { color: #ffffff; text-decoration: none; font-size: 1rem; font-weight: 500; display: block; transition: all 0.3s ease; }
-    #mobile-menu a:hover { color: #00ff96; transform: translateY(-3px); }
-    @media (max-width: 768px) {
-      nav .container { justify-content: space-between; }
-      .logo img { display: block; }
-      .nav-spacer { display: none; }
-      .nav-links { display: none; }
-      .mobile-menu-btn { display: block; }
-    }
-
-    /* Hero */
-    .hero {
-      position: relative; overflow: hidden; min-height: 45vh;
-      display: flex; align-items: center; padding-top: 80px; margin-bottom: 2rem;
-    }
-    .hero-logo-stamp {
-      position: absolute; left: -10%; top: 50%; transform: translateY(-50%);
-      width: 55%; max-width: 700px; opacity: 0.2; pointer-events: none; user-select: none; filter: blur(1px);
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, #00ff96, #00ccff);
-      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-content { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; position: relative; z-index: 1; }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; margin-bottom: 1rem;
-      line-height: 1.2; letter-spacing: -0.02em; font-family: 'HeliosExt', 'Inter', sans-serif;
-    }
-    .hero-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto; line-height: 1.6; }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-
-    section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    section:first-of-type { padding-top: 4rem; }
-    section:last-of-type { border-bottom: none; }
-
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 0.6rem; margin-top: 0;
-      text-align: center; letter-spacing: -0.01em; font-family: 'HeliosExt', 'Inter', sans-serif;
-    }
-    h3 { font-family: 'HeliosExt', 'Inter', sans-serif; }
-
-    .section-subtitle {
-      text-align: center; color: rgba(255,255,255,0.6); font-size: 0.95rem;
-      margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;
-    }
-
-    /* ── Choose Your Path ── */
-    .path-grid {
-      display: flex; flex-direction: row; gap: 1.5rem; margin-bottom: 1rem; overflow: visible;
-    }
-    .path-card {
-      padding: 2rem 1.5rem; border-radius: 1.5rem; text-align: center;
-      transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;
-      display: flex; flex-direction: column; align-items: center; gap: 1rem;
-      flex: 1 1 0; min-width: 0;
-    }
-    .path-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
-    .path-icon { font-size: 2.5rem; }
-    .path-card h3 { font-size: 1.25rem; font-weight: 700; }
-    .path-card p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.5; }
-    .path-tag {
-      display: inline-block; padding: 0.3rem 0.75rem; border-radius: 9999px;
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-      border: 1px solid rgba(0,255,150,0.3); color: #00ff96; background: rgba(0,255,150,0.08);
-    }
-
-    /* ── One-Time Design Packages ── */
-    .design-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-    }
-    .design-card {
-      padding: 2rem 1.5rem; border-radius: 1.5rem;
-      display: flex; flex-direction: column; transition: all 0.3s ease; position: relative;
-    }
-    .design-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
-    .design-card.featured { border: 2px solid rgba(0,255,150,0.5); }
-    .popular-badge {
-      display: none; position: absolute; top: 1rem; right: 1rem;
-      background: rgba(0,255,150,0.15); border: 1px solid rgba(0,255,150,0.4);
-      padding: 0.35rem 0.85rem; border-radius: 9999px;
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #00ff96;
-    }
-    .design-card.featured .popular-badge { display: block; }
-    .design-tier { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255, 255, 255, 0.55); margin-bottom: 0.5rem; }
-    .design-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
-    .design-price {
-      font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem;
-      background: linear-gradient(135deg, #00ff96, #00ccff);
-      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .design-price-note { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
-    .design-features { list-style: none; flex: 1; }
-    .design-features li {
-      padding: 0.6rem 0; padding-left: 1.4rem; position: relative;
-      color: rgba(255,255,255,0.7); font-size: 0.88rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .design-features li:before { content: '✓'; position: absolute; left: 0; color: #00ff96; font-weight: 700; }
-    .design-cta { margin-top: 1.5rem; }
-    .btn-primary {
-      display: block; width: 100%; padding: 0.9rem; border-radius: 1rem; text-align: center;
-      text-decoration: none; font-weight: 600; transition: all 0.3s ease;
-      background: linear-gradient(135deg, #00ff96, #00ccff); color: #000000;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,255,150,0.3); }
-    .btn-secondary {
-      display: block; width: 100%; padding: 0.9rem; border-radius: 1rem; text-align: center;
-      text-decoration: none; font-weight: 600; transition: all 0.3s ease;
-      background: linear-gradient(135deg, #00ff96, #00ccff); color: #000000;
-    }
-    .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,255,150,0.3); }
-
-    /* ── Management Tiers ── */
-    .mgmt-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-    }
-    .mgmt-card {
-      padding: 2.5rem; border-radius: 1.5rem;
-      display: flex; flex-direction: column; transition: all 0.3s ease; position: relative;
-    }
-    .mgmt-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
-    .mgmt-card.featured { border: 2px solid rgba(0,255,150,0.5); }
-    .mgmt-price {
-      font-size: 1.6rem; font-weight: 700; margin-bottom: 0.25rem;
-      background: linear-gradient(135deg, #00ff96, #00ccff);
-      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .mgmt-period { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
-    .mgmt-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
-    .mgmt-desc { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.55; }
-    .mgmt-meta {
-      display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;
-    }
-    .mgmt-badge {
-      padding: 0.3rem 0.7rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 600;
-      background: rgba(0,204,255,0.1); border: 1px solid rgba(0,204,255,0.25); color: #00ccff;
-    }
-    .mgmt-features { list-style: none; flex: 1; margin-bottom: 1.5rem; }
-    .mgmt-features li {
-      padding: 0.65rem 0; padding-left: 1.4rem; position: relative;
-      color: rgba(255,255,255,0.7); font-size: 0.9rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .mgmt-features li:before { content: '✓'; position: absolute; left: 0; color: #00ff96; font-weight: 700; }
-    .mgmt-features li.not-included { color: rgba(255,255,255,0.3); }
-    .mgmt-features li.not-included:before { content: '—'; color: rgba(255,255,255,0.2); }
-    .mgmt-cta { margin-top: auto; }
-    .commitment-note {
-      font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: center; margin-top: 0.75rem;
-    }
-
-    /* ── Upsells ── */
-    .upsell-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    }
-    .upsell-price { display: none; }
-    .upsell-card {
-      padding: 1.75rem; border-radius: 1.5rem; transition: all 0.3s ease;
-    }
-    .upsell-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
-    .upsell-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
-    .upsell-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .upsell-price {
-      font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, #00ff96, #00ccff);
-      background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .upsell-desc { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.5; }
-
-    /* ── Ad Management Table ── */
-    .ad-table-wrap { overflow-x: auto; margin-top: 2rem; }
-    .ad-table {
-      width: 100%; border-collapse: collapse; font-size: 0.92rem;
-    }
-    .ad-table th, .ad-table td {
-      padding: 1.1rem 1.25rem; text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .ad-table th { background: rgba(255,255,255,0.06); font-weight: 700; color: rgba(255,255,255,0.9); }
-    .ad-table td { color: rgba(255,255,255,0.7); }
-    .ad-table tr:hover td { background: rgba(255,255,255,0.03); }
-    .ad-highlight { color: #00ff96; font-weight: 700; }
-
-    /* ── Comparison table ── */
-    .comparison-section { margin-top: 3rem; padding-top: 3rem; border-top: 2px solid rgba(255,255,255,0.1); }
-    .comparison-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-    .comparison-table th, .comparison-table td { padding: 1.1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .comparison-table th { background: rgba(255,255,255,0.05); font-weight: 700; font-size: 0.9rem; color: rgba(255,255,255,0.9); }
-    .comparison-table td { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
-    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
-    .comparison-table .check { color: #00ccff; font-weight: 700; }
-    .comparison-table .check::first-letter { color: #00ff96; }
-
-    /* ── Path sections: hidden until selected ── */
-    .path-section { display: none; animation: sectionReveal 0.45s ease; }
-    .path-section.active { display: block; }
-    @keyframes sectionReveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    /* Default glow on Design+Mgmt card, overridden when user selects */
-    .path-card.default-glow {
-      border-color: rgba(0,255,150,0.55) !important;
-      box-shadow: 0 0 28px rgba(0,255,150,0.18);
-    }
-    .path-card.selected {
-      border-color: rgba(0,255,150,0.6) !important;
-      background: rgba(0,255,150,0.07);
-      box-shadow: 0 0 32px rgba(0,255,150,0.22);
-    }
-    /* View all toggle link */
-    .view-all-link {
-      display: inline-flex; align-items: center; gap: 0.4rem; cursor: pointer;
-      color: rgba(255,255,255,0.45); font-size: 0.82rem; text-decoration: underline;
-      text-underline-offset: 3px; background: none; border: none;
-      font-family: 'HeliosExt', 'Inter', sans-serif; transition: color 0.2s ease;
-    }
-    .view-all-link:hover { color: #00ff96; }
-
-    /* ── Always Included ── */
-    .always-included-section, .ad-mgmt-section { padding-top: 3rem; }
-    .always-included-static { display: grid; }
-
-    /* ── Our Work ── */
-    .work-section { padding: 4rem 0 0; }
-    .carousel-wrapper { overflow: hidden; position: relative; scroll-behavior: smooth; }
-    .carousel-track {
-      display: flex; gap: 2rem;
-      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform; padding-bottom: 0.5rem;
-    }
-    .work-card {
-      border-radius: 1.5rem; overflow: hidden; transition: box-shadow 0.3s ease, transform 0.3s ease;
-      display: flex; flex-direction: column; flex: 0 0 calc(50% - 1rem); min-width: 0;
-    }
-    .work-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover-subtle); border-color: rgba(255,255,255,0.3); }
-    .work-section.expanded .carousel-wrapper { overflow: visible; }
-    .work-section.expanded .carousel-track { display: grid; grid-template-columns: repeat(2,1fr); transform: none !important; transition: none; gap: 2.5rem; }
-    .work-section.expanded .carousel-track .work-card { flex: unset; }
-    .work-section.expanded .carousel-controls { display: none !important; }
-    .view-more-wrap { text-align: center; padding: 1.75rem 0 3rem; }
-    #view-more-btn {
-      background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7);
-      padding: 0.75rem 1.75rem; border-radius: 1rem; cursor: pointer; font-size: 0.9rem;
-      display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;
-      font-family: 'HeliosExt', 'Inter', sans-serif;
-    }
-    #view-more-btn:hover { border-color: #00ff96; color: #00ff96; }
-    .work-card-header { padding: 1.5rem 1.5rem 0.75rem; }
-    .work-card-meta { display: flex; justify-content: space-between; align-items: center; }
-    .work-card-meta h3 { font-size: 1.1rem; font-weight: 700; }
-    .work-card-meta .year { font-size: 0.85rem; color: rgba(255, 255, 255, 0.55); }
-    .work-card-desc { padding: 0 1.5rem 1rem; color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.55; }
-    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    .carousel-controls { display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; }
-    .carousel-btn {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
-      color: #fff; width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
-      font-size: 1rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
-    }
-    .carousel-btn:hover { background: rgba(0,255,150,0.15); border-color: #00ff96; color: #00ff96; }
-
-    /* ── CTA Section ── */
-    .cta-section { text-align: center; padding: 4rem 1.5rem; }
-    .cta-section h2 { margin-bottom: 1.5rem; }
-    .cta-text { font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-    /* ── Google Reviews (floating bubbles) ── */
-    .reviews-section { padding: 5rem 0 0; position: relative; overflow: hidden; }
-    .reviews-section-inner { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; text-align: center; }
-    .reviews-label {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 9999px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600;
-      color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
-    }
-    .reviews-label .google-dot { width: 8px; height: 8px; border-radius: 50%; background: #F4B400; }
-    .reviews-stars-row { display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin-bottom: 3rem; color: rgba(255,255,255,0.6); font-size: 0.9rem; }
-    .reviews-stars-row .stars { color: #F4B400; font-size: 1.1rem; letter-spacing: 2px; }
-    .reviews-bubble-wrap { position: relative; height: 520px; -webkit-mask-image: linear-gradient(to bottom,transparent 0%,black 28%); mask-image: linear-gradient(to bottom,transparent 0%,black 28%); }
-    .review-bubble { position: absolute; background: rgba(255,255,255,0.07); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; text-align: left; max-width: 320px; animation: floatBubble var(--dur,6s) ease-in-out infinite; animation-delay: var(--delay,0s); }
-    .review-bubble::before { content: ''; position: absolute; bottom: -8px; left: 22px; width: 16px; height: 16px; background: rgba(255,255,255,0.07); border-right: 1px solid rgba(255,255,255,0.14); border-bottom: 1px solid rgba(255,255,255,0.14); transform: rotate(45deg); backdrop-filter: blur(24px); }
-    .bubble-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
-    .bubble-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,#00ff96,#00ccff); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #000; flex-shrink: 0; }
-    .bubble-name { font-size: 0.85rem; font-weight: 600; color: #fff; }
-    .bubble-stars { color: #F4B400; font-size: 0.7rem; letter-spacing: 1px; }
-    .bubble-text { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
-    @keyframes floatBubble {
-      0%,100% { transform: translateY(0px) rotate(var(--rot,0deg)); }
-      50%      { transform: translateY(-10px) rotate(var(--rot,0deg)); }
-    }
-    .rb-1 { top:60px;  left:0%;    --dur:7s;   --delay:0s;   --rot:-1.5deg; }
-    .rb-2 { top:20px;  left:28%;   --dur:6s;   --delay:-2s;  --rot:1deg;    }
-    .rb-3 { top:55px;  right:0%;   --dur:8s;   --delay:-4s;  --rot:2deg;    }
-    .rb-4 { top:230px; left:5%;    --dur:6.5s; --delay:-1s;  --rot:-2deg;   }
-    .rb-5 { top:200px; left:32%;   --dur:7.5s; --delay:-3s;  --rot:0.5deg;  }
-    .rb-6 { top:240px; right:2%;   --dur:6s;   --delay:-5s;  --rot:-1deg;   }
-    @media (max-width:768px) {
-      .reviews-bubble-wrap { height: 780px; }
-      .rb-1 { top:40px;  left:0;   max-width:80vw; }
-      .rb-2 { top:200px; left:10%; max-width:78vw; }
-      .rb-3 { top:380px; left:5%;  max-width:82vw; }
-      .rb-4,.rb-5,.rb-6 { display:none; }
-    }
-
-    /* ── Footer ── */
-    footer { background: rgba(255,255,255,0.03); padding: 3rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
-    .footer-content { max-width: 1200px; margin: 0 auto; }
-    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
-    .footer-links a:hover { color: #00ff96; }
-    .footer-bottom { color: rgba(255, 255, 255, 0.55); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-socials { display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap; }
-    .footer-socials a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; }
-    .footer-socials a:hover { background: rgba(255,255,255,0.12); border-color: rgba(0,255,150,0.4); color: #00ff96; transform: translateY(-3px); box-shadow: var(--shadow-hover-subtle); }
-    .footer-socials a.popl:hover { background: rgba(255,255,255,0.12); border-color: rgba(0,204,255,0.4); color: #00ccff; box-shadow: var(--shadow-hover-subtle); }
-    .footer-socials a.google:hover { background: rgba(255,255,255,0.12); border-color: rgba(244,180,0,0.4); color: #F4B400; box-shadow: var(--shadow-hover-subtle); }
-
-    /* ── Floating Logo ── */
-    .floating-logo {
-      position: fixed; bottom: 25px; right: 25px; z-index: 50;
-      width: 60px; height: 60px; border-radius: var(--radius-sm); padding: 0;
-      display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease;
-    }
-    .floating-logo:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
-    .floating-logo img { height: 22px; width: auto; }
-
-    /* ── Responsive ── */
-    @media (max-width: 1024px) {
-      .design-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .hero { min-height: 30vh; padding-top: 70px; }
-      section { padding: 2rem 0; }
-      h2 { font-size: 1.65rem; margin-bottom: 0.75rem; }
-      .section-subtitle { margin-bottom: 1.5rem; font-size: 0.9rem; }
-      /* path-grid: horizontal swipe carousel */
-      .path-grid {
-        overflow-x: scroll; scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; gap: 1rem;
-        padding: 0.5rem 1rem 1rem; margin: 0 -1.5rem; scrollbar-width: none;
-      }
-      .path-grid::-webkit-scrollbar { display: none; }
-      .path-grid .path-card { flex: 0 0 78%; scroll-snap-align: center; min-width: 0; }
-      .design-grid {
-        display: flex; flex-direction: row; overflow-x: scroll; scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; gap: 1rem; padding: 0.5rem 1rem 1rem;
-        margin: 0 -1.5rem; scrollbar-width: none; grid-template-columns: unset;
-      }
-      .design-grid::-webkit-scrollbar { display: none; }
-      .design-grid .design-card { flex: 0 0 82%; scroll-snap-align: center; }
-      .mgmt-grid {
-        display: flex; flex-direction: row; overflow-x: scroll; scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; gap: 1rem; padding: 0.5rem 1rem 1rem;
-        margin: 0 -1.5rem; scrollbar-width: none;
-      }
-      .mgmt-grid::-webkit-scrollbar { display: none; }
-      .mgmt-grid .mgmt-card { flex: 0 0 85%; scroll-snap-align: center; }
-      /* upsell-grid: horizontal swipe carousel on mobile */
-      .upsell-grid {
-        display: flex; flex-direction: row; overflow-x: scroll; scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; gap: 1rem; padding: 0.5rem 1rem 1rem;
-        margin: 0 -1.5rem; scrollbar-width: none; grid-template-columns: unset;
-      }
-      .upsell-grid::-webkit-scrollbar { display: none; }
-      .upsell-grid .upsell-card { flex: 0 0 78%; scroll-snap-align: center; }
-      .pkg-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; margin-bottom: 0.5rem; }
-      .pkg-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); transition: background 0.3s ease; cursor: pointer; }
-      .pkg-dot.active { background: #00ff96; }
-      .always-included-section, .ad-mgmt-section { padding-top: 2rem; }
-      .always-included-track-wrap { overflow: hidden; position: relative; }
-      .always-included-track-wrap::before, .always-included-track-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
-      .always-included-track-wrap::before { left: 0; background: linear-gradient(to right, #000 0%, transparent 100%); }
-      .always-included-track-wrap::after { right: 0; background: linear-gradient(to left, #000 0%, transparent 100%); }
-      .always-included-track { display: flex; gap: 1rem; width: max-content; animation: scrollAlways 36s linear infinite; }
-      .always-included-track .always-card { flex: 0 0 72vw; }
-      @keyframes scrollAlways { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      .always-included-static { display: none; }
-      .always-included-track-wrap { display: block; }
-      .ad-table th, .ad-table td { padding: 0.8rem; font-size: 0.82rem; }
-      .floating-logo { width: 50px; height: 50px; font-size: 1.2rem; }
-      /* Work carousel: one card at a time on mobile, swipable */
-      .carousel-wrapper {
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .carousel-wrapper::-webkit-scrollbar { display: none; }
-      .carousel-track { gap: 1rem; padding: 0 1rem 1rem; margin: 0 -1rem; }
-      .carousel-track .work-card { flex: 0 0 calc(100vw - 3rem); scroll-snap-align: center; }
-    }
-    @media (min-width: 769px) {
-      .always-included-static { display: grid; }
-      .always-included-track-wrap { display: none; }
-    }
-
-    /* Stripe Payment Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(4px);
-    }
-
-    .modal.active { display: flex !important; }
-
-    .modal-content {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 2rem;
-      padding: 2rem;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-      animation: slideIn 0.3s ease;
-    }
-
-    @keyframes slideIn {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-header h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .close-modal {
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .close-modal:hover { color: #fff; }
-
-    .modal-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-group label {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .form-group input {
-      padding: 0.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      font-size: 0.95rem;
-    }
-
-    .form-group input::placeholder {
-      color: rgba(255, 255, 255, 0.55);
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: #00ff96;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 3px rgba(0, 255, 150, 0.25);
-    }
-
-    #payment-element {
-      margin: 1.5rem 0;
-    }
-
-    .modal-footer {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .modal-btn {
-      flex: 1;
-      padding: 0.9rem;
-      border-radius: 1rem;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .modal-btn.primary {
-      background: linear-gradient(135deg, #00ff96, #00ccff);
-      color: #000;
-    }
-
-    .modal-btn.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 255, 150, 0.3);
-    }
-
-    .modal-btn.primary:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .modal-btn.secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .modal-btn.secondary:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .notification-modal {
-      display: none;
-      position: fixed;
-      z-index: 101;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .notification-modal.success {
-      --accent-color: #00ff96;
-    }
-
-    .notification-modal.error {
-      --accent-color: #ff6b6b;
-    }
-
-    .notification-content {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 2rem;
-      padding: 2rem;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      border-top: 3px solid var(--accent-color);
-    }
-
-    .notification-content h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      color: var(--accent-color);
-    }
-
-    .notification-content p {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 1.5rem;
-    }
-
-    .close-notification {
-      padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .close-notification:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-  </style>
-  <script async src="https://js.stripe.com/v3/"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Website Packages | VAURA Digital Craftsmanship</title>
+<meta name="description" content="Fully custom website packages from VAURA: one-time design, design plus management, or management only. Professional sites built to convert and scale.">
+<link rel="canonical" href="https://vauraagency.com/packages.html">
+<meta name="theme-color" content="#07050b">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VAURA">
+<meta property="og:title" content="Website Packages | VAURA Digital Craftsmanship">
+<meta property="og:description" content="Professional, fully custom websites designed to convert and built to scale.">
+<meta property="og:url" content="https://vauraagency.com/packages.html">
+<meta property="og:image" content="https://vauraagency.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Packages | VAURA Digital Craftsmanship">
+<meta name="twitter:description" content="Professional, fully custom websites designed to convert and built to scale.">
+<meta name="twitter:image" content="https://vauraagency.com/assets/og.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="image" href="assets/poster.webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-tight-latin-500-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/instrument-serif-latin-400-italic.woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+<!-- Stripe checkout: re-enable together with stripe-checkout.js below
+<script async src="https://js.stripe.com/v3/"></script> -->
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="glass">
-    <div class="container">
-      <div class="logo">
-        <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-          <img src="Logo no writing wht.png" alt="VAURA" style="height: 40px; width: auto;">
-        </a>
-      </div>
-      <div class="nav-spacer"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="packages.html" class="active">Website Packages</a></li>
-        <li><a href="photovideo.html">Photo / Video</a></li>
-        <li><a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" class="glass-button" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Book a Call</a></li>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="wv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3df5a4"/><stop offset=".55" stop-color="#8a63ff"/><stop offset="1" stop-color="#e04bd0"/></linearGradient></defs></svg>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="VAURA home">
+      <img src="assets/mark.svg" width="42" height="27" alt="">
+      <span>VAURA</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="packages.html" aria-current="page">Website Packages</a></li><li><a href="photovideo.html">Photo / Video</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="menu-toggle" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
+    </nav>
+    <a class="btn btn-glass" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener">Book a Call</a>
+    <button class="menu-btn" id="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="bars" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+      <svg class="x" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l10 10M14 4 4 14"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <a href="index.html">Home</a><a href="services.html">Services</a><a href="packages.html" aria-current="page">Website Packages</a><a href="photovideo.html">Photo / Video</a>
+    <a class="btn btn-solid" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener">Book a Call</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero sub" id="top" aria-label="Introduction">
+  <div class="layer layer-back" data-depth="0.38">
+    <div class="poster" aria-hidden="true"></div>
+    <video id="heroVideo" muted loop playsinline preload="none" poster="assets/poster.webp" data-base="assets/hero" aria-hidden="true" tabindex="-1"></video>
+  </div>
+  <div class="layer layer-front" data-depth="-0.22" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#3df5a4" stop-opacity="0"/><stop offset=".3" stop-color="#3df5a4"/><stop offset=".65" stop-color="#8a63ff"/><stop offset="1" stop-color="#e04bd0" stop-opacity="0"/></linearGradient><filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter></defs><path class="base" stroke="url(#tg)" stroke-width="1.2" d="M-50 760 C 300 620, 520 860, 820 700 S 1300 520, 1660 640"/><path class="pulse" filter="url(#glow)" stroke="url(#tg)" stroke-width="3.6" d="M-50 760 C 300 620, 520 860, 820 700 S 1300 520, 1660 640" style="animation-duration:14s"/><path class="pulse core" stroke="url(#tg)" stroke-width="1.2" d="M-50 760 C 300 620, 520 860, 820 700 S 1300 520, 1660 640" style="animation-duration:14s"/><path class="base" stroke="url(#tg)" stroke-width="0.9" d="M-50 820 C 260 700, 600 900, 900 760 S 1360 600, 1660 720"/><path class="pulse" filter="url(#glow)" stroke="url(#tg)" stroke-width="2.7" d="M-50 820 C 260 700, 600 900, 900 760 S 1360 600, 1660 720" style="animation-duration:19s;animation-direction:reverse"/><path class="pulse core" stroke="url(#tg)" stroke-width="0.9" d="M-50 820 C 260 700, 600 900, 900 760 S 1360 600, 1660 720" style="animation-duration:19s;animation-direction:reverse"/><path class="base" stroke="url(#tg)" stroke-width="0.8" d="M-50 120 C 340 240, 620 40, 900 150 S 1350 260, 1660 120"/><path class="pulse" filter="url(#glow)" stroke="url(#tg)" stroke-width="2.4" d="M-50 120 C 340 240, 620 40, 900 150 S 1350 260, 1660 120" style="animation-duration:23s"/><path class="pulse core" stroke="url(#tg)" stroke-width="0.8" d="M-50 120 C 340 240, 620 40, 900 150 S 1350 260, 1660 120" style="animation-duration:23s"/><path class="base" stroke="url(#tg)" stroke-width="1" d="M-50 60 C 300 180, 700 -20, 1000 90 S 1400 160, 1660 40"/><path class="pulse" filter="url(#glow)" stroke="url(#tg)" stroke-width="3.0" d="M-50 60 C 300 180, 700 -20, 1000 90 S 1400 160, 1660 40" style="animation-duration:17s;animation-direction:reverse"/><path class="pulse core" stroke="url(#tg)" stroke-width="1.0" d="M-50 60 C 300 180, 700 -20, 1000 90 S 1400 160, 1660 40" style="animation-duration:17s;animation-direction:reverse"/></svg>
+  </div>
+  <div class="layer layer-mid" data-depth="0.16" data-fade>
+    <div class="hero-inner">
+      <span class="eyebrow">Website Packages</span>
+      <h1><span class="line"><span>Website</span></span><span class="line"><span><em class="s grad">Packages</em></span></span></h1>
+      <p class="lede">Professional, fully custom websites designed to convert and built to scale.</p>
+      
     </div>
-    <div id="mobile-menu">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="packages.html">Website Packages</a>
-      <a href="photovideo.html">Photo / Video</a>
-      <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" class="glass-button" style="padding: 0.75rem 1.5rem;">Book a Call</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <img src="vaura-logo-white.png" alt="" class="hero-logo-stamp">
-    <div class="hero-content">
-      <h1>Website <span class="gradient-text">Packages</span></h1>
-      <p class="hero-subtitle">Professional, fully custom websites designed to convert and built to scale.</p>
-    </div>
-  </section>
-
-  <!-- Choose Your Path -->
-  <section class="container">
-    <h2>Choose Your <span class="gradient-text">Path</span></h2>
-    <p class="section-subtitle">Select the path that suits your needs and pricing will appear below ↓</p>
-    <div class="path-grid" id="path-grid">
-      <div class="path-card glass" id="path-design-mgmt" onclick="selectPath('design-mgmt')" style="border: 2px solid rgba(0,255,150,0.3); cursor:pointer;">
-        <div class="path-icon">🚀</div>
-        <div class="path-tag" style="background: rgba(0,255,150,0.12); border-color: rgba(0,255,150,0.4);">Most Popular</div>
-        <h3>Design + Management</h3>
-        <p>We build it and we run it. Your site lives under VAURA's care — hosting, updates, and growth included.</p>
-      </div>
-      <div class="path-card glass" id="path-design-only" onclick="selectPath('design-only')" style="cursor:pointer;">
-        <div class="path-icon">🎨</div>
-        <div class="path-tag">One-Time</div>
-        <h3>Website Design Only</h3>
-        <p>We build your site, you own it outright. Full handoff with no ongoing commitment. Perfect if you have in-house support or want complete control.</p>
-      </div>
-      <div class="path-card glass" id="path-mgmt-only" onclick="selectPath('mgmt-only')" style="cursor:pointer;">
-        <div class="path-icon">🔧</div>
-        <div class="path-tag">Recurring</div>
-        <h3>Management Only</h3>
-        <p>Already have a site? Hand it off to us. We'll handle hosting, updates, and ongoing maintenance so you can focus on running your business.</p>
-      </div>
-    </div>
-    <p style="text-align: center; margin-top: 1rem;">
-      <button class="view-all-link" id="view-all-btn" onclick="toggleViewAll()">↓ Click here to view all options</button>
+  </div>
+  <div class="hero-meta">
+    <a class="rating-chip" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google</a>
+    <div class="scrollcue" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="sec" id="path">
+  <div class="orb g" data-depth="-0.12" style="width:420px;height:420px;left:-160px;top:6%"></div>
+  <div class="wrap">
+    <div class="head rv"><h2>Choose Your <em class="s grad">Path</em></h2><p class="sub">Select the path that suits your needs and pricing will appear below ↓</p></div>
+    <div class="grid g3 paths snap" id="path-grid" data-dots><div class="card path-card rv" id="path-design-mgmt" role="button" tabindex="0" aria-pressed="false" onclick="selectPath('design-mgmt')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectPath('design-mgmt')}"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></span><span class="path-tag">Most Popular</span><h3>Design + Management</h3><p>We build it and we run it. Your site lives under VAURA's care — hosting, updates, and growth included.</p><span class="pick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div><div class="card path-card rv" id="path-design-only" role="button" tabindex="0" aria-pressed="false" onclick="selectPath('design-only')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectPath('design-only')}"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.6-.7 1.6-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.7-1.7 1.7-1.7h2c3.1 0 5.6-2.5 5.6-5.6C22 6 17.5 2 12 2z"/></svg></span><span class="path-tag">One-Time</span><h3>Website Design Only</h3><p>We build your site, you own it outright. Full handoff with no ongoing commitment. Perfect if you have in-house support or want complete control.</p><span class="pick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div><div class="card path-card rv" id="path-mgmt-only" role="button" tabindex="0" aria-pressed="false" onclick="selectPath('mgmt-only')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectPath('mgmt-only')}"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8z"/></svg></span><span class="path-tag">Recurring</span><h3>Management Only</h3><p>Already have a site? Hand it off to us. We'll handle hosting, updates, and ongoing maintenance so you can focus on running your business.</p><span class="pick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="width:14px;height:14px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div></div>
+    <p class="center" style="margin:22px 0 0">
+      <button class="view-all-link" id="view-all-btn" type="button" onclick="toggleViewAll()">↓ Click here to view all options</button>
     </p>
-  </section>
+  </div>
+</section>
+<section class="sec tight path-section" id="section-design">
+  <div class="wrap">
+    <div class="head rv"><h2>Custom Website <em class="s grad">Design</em></h2><p class="sub">One-time investment. You own the site outright. All builds include mobile responsiveness, SSL, and 30 days of free support.</p></div>
+    <div class="grid g4 snap" id="design-grid" data-dots><article class="card design-card rv"><span class="tier">Entry Level</span><h3 class="price">Landing Page</h3><p class="note">one-time · you own it</p><ul class="ticks"><li>Single-page design</li><li>Mobile responsive</li><li>Contact form + email</li><li>SSL &amp; basic SEO</li><li>Google Analytics</li><li>30 days free support</li></ul><a class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a></article><article class="card design-card rv"><span class="tier">Starter</span><h3 class="price">Starter Site</h3><p class="note">one-time · you own it</p><ul class="ticks"><li>Up to 5 pages</li><li>Mobile responsive design</li><li>Basic SEO setup</li><li>Contact forms &amp; email</li><li>Social media links</li><li>Google Analytics</li><li>30 days free support</li></ul><a class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a></article><article class="card design-card rv pop"><span class="badge">POPULAR</span><span class="tier">Professional</span><h3 class="price">Professional</h3><p class="note">one-time · you own it</p><ul class="ticks"><li>Up to 10 pages</li><li>Fully custom bespoke design</li><li>Advanced SEO &amp; copywriting</li><li>Blog / CMS included</li><li>E-commerce ready (up to 100 products)</li><li>Testimonial system</li><li>60 days free support</li><li>Performance optimization</li></ul><a class="btn btn-solid" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Schedule Call</a></article><article class="card design-card rv"><span class="tier">Enterprise</span><h3 class="price">Premium Site</h3><p class="note">custom scope · you own it</p><ul class="ticks"><li>20+ pages, custom functionality</li><li>Bespoke UX &amp; interactions</li><li>Advanced animations &amp; effects</li><li>Full e-commerce integration</li><li>API integrations &amp; custom tools</li><li>Membership / subscription systems</li><li>Priority support &amp; quarterly reviews</li><li>Ongoing content updates included</li></ul><a class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Let's Talk</a></article></div>
 
-  <!-- Custom Website Design (One-Time) — shown for Design Only + Design+Mgmt paths -->
-  <section class="container path-section" id="section-design">
-    <h2>Custom Website <span class="gradient-text">Design</span></h2>
-    <p class="section-subtitle">One-time investment. You own the site outright. All builds include mobile responsiveness, SSL, and 30 days of free support.</p>
-
-    <div class="design-grid">
-      <!-- Landing Page -->
-      <div class="design-card glass">
-        <div class="design-tier">Entry Level</div>
-        <div class="design-price">Landing Page</div>
-        <p class="design-price-note">one-time · you own it</p>
-        <ul class="design-features">
-          <li>Single-page design</li>
-          <li>Mobile responsive</li>
-          <li>Contact form + email</li>
-          <li>SSL & basic SEO</li>
-          <li>Google Analytics</li>
-          <li>30 days free support</li>
-        </ul>
-        <div class="design-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-        </div>
-      </div>
-
-      <!-- Starter -->
-      <div class="design-card glass">
-        <div class="design-tier">Starter</div>
-        <div class="design-price">Starter Site</div>
-        <p class="design-price-note">one-time · you own it</p>
-        <ul class="design-features">
-          <li>Up to 5 pages</li>
-          <li>Mobile responsive design</li>
-          <li>Basic SEO setup</li>
-          <li>Contact forms & email</li>
-          <li>Social media links</li>
-          <li>Google Analytics</li>
-          <li>30 days free support</li>
-        </ul>
-        <div class="design-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-        </div>
-      </div>
-
-      <!-- Professional (Featured) -->
-      <div class="design-card glass featured">
-        <div class="popular-badge">POPULAR</div>
-        <div class="design-tier">Professional</div>
-        <div class="design-price">Professional</div>
-        <p class="design-price-note">one-time · you own it</p>
-        <ul class="design-features">
-          <li>Up to 10 pages</li>
-          <li>Fully custom bespoke design</li>
-          <li>Advanced SEO & copywriting</li>
-          <li>Blog / CMS included</li>
-          <li>E-commerce ready (up to 100 products)</li>
-          <li>Testimonial system</li>
-          <li>60 days free support</li>
-          <li>Performance optimization</li>
-        </ul>
-        <div class="design-cta">
-          <button class="btn-primary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Schedule Call</button>
-        </div>
-      </div>
-
-      <!-- Premium -->
-      <div class="design-card glass">
-        <div class="design-tier">Enterprise</div>
-        <div class="design-price">Premium Site</div>
-        <p class="design-price-note">custom scope · you own it</p>
-        <ul class="design-features">
-          <li>20+ pages, custom functionality</li>
-          <li>Bespoke UX & interactions</li>
-          <li>Advanced animations & effects</li>
-          <li>Full e-commerce integration</li>
-          <li>API integrations & custom tools</li>
-          <li>Membership / subscription systems</li>
-          <li>Priority support & quarterly reviews</li>
-          <li>Ongoing content updates included</li>
-        </ul>
-        <div class="design-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Let's Talk</button>
-        </div>
-      </div>
-    </div>
-    <div class="pkg-dots" id="design-dots" style="display: none;">
-      <div class="pkg-dot active"></div>
-      <div class="pkg-dot"></div>
-      <div class="pkg-dot"></div>
-      <div class="pkg-dot"></div>
-    </div>
-
-    <!-- Comparison Table -->
-    <div class="comparison-section">
-      <h3 style="font-size: 1.5rem; text-align: left; margin-bottom: 2rem; font-family: 'HeliosExt', 'Inter', sans-serif;">Detailed Comparison</h3>
-      <div style="overflow-x: auto;">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>Landing Page</th>
-              <th>Starter</th>
-              <th>Professional</th>
-              <th>Premium</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Number of Pages</td>
-              <td>1 page</td>
-              <td>Up to 5</td>
-              <td>Up to 10</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Custom Design</td>
-              <td>Template Based</td>
-              <td>Template Based</td>
-              <td class="check">✓ Full Custom</td>
-              <td class="check">✓ Bespoke</td>
-            </tr>
-            <tr>
-              <td>SEO Optimization</td>
-              <td>Basic</td>
-              <td>Basic</td>
-              <td class="check">✓ Advanced</td>
-              <td class="check">✓ Advanced</td>
-            </tr>
-            <tr>
-              <td>E-Commerce</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td class="check">✓ Up to 50 Products</td>
-              <td class="check">✓ Unlimited</td>
-            </tr>
-            <tr>
-              <td>Blog / CMS</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td class="check">✓ Included</td>
-              <td class="check">✓ Advanced</td>
-            </tr>
-            <tr>
-              <td>API Integration</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td>Basic</td>
-              <td class="check">✓ Full Integration</td>
-            </tr>
-            <tr>
-              <td>Animations & Effects</td>
-              <td>Not Included</td>
-              <td>Standard</td>
-              <td>Standard</td>
-              <td class="check">✓ Advanced</td>
-            </tr>
-            <tr>
-              <td>Membership / Subscriptions</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td class="check">✓ Included</td>
-            </tr>
-            <tr>
-              <td>Mobile Responsive</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-            </tr>
-            <tr>
-              <td>SSL & Security</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-            </tr>
-            <tr>
-              <td>Google Analytics</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-              <td class="check">✓ Yes</td>
-            </tr>
-            <tr>
-              <td>Free Support After Launch</td>
-              <td>30 days</td>
-              <td>30 days</td>
-              <td>60 days</td>
-              <td>3 months</td>
-            </tr>
-            <tr>
-              <td>Revision Rounds</td>
-              <td>1</td>
-              <td>2</td>
-              <td>4</td>
-              <td>Unlimited</td>
-            </tr>
-            <tr>
-              <td>Performance Optimization</td>
-              <td>Standard</td>
-              <td>Standard</td>
-              <td class="check">✓ Advanced</td>
-              <td class="check">✓ Premium</td>
-            </tr>
-            <tr>
-              <td>Priority Support</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td>Not Included</td>
-              <td class="check">✓ Included</td>
-            </tr>
-          </tbody>
+    <div class="comparison-section" style="margin-top:clamp(56px,7vw,90px)">
+      <h3 class="rv" style="font-size:clamp(26px,3vw,36px);margin-bottom:26px">Detailed <em class="s grad">Comparison</em></h3>
+      <div class="table-wrap rv">
+        <table class="table comparison-table">
+          <thead><tr><th>Feature</th><th>Landing Page</th><th>Starter</th><th>Professional</th><th>Premium</th></tr></thead>
+          <tbody><tr><td>Number of Pages</td><td>1 page</td><td>Up to 5</td><td>Up to 10</td><td>Unlimited</td></tr><tr><td>Custom Design</td><td>Template Based</td><td>Template Based</td><td class="check">✓ Full Custom</td><td class="check">✓ Bespoke</td></tr><tr><td>SEO Optimization</td><td>Basic</td><td>Basic</td><td class="check">✓ Advanced</td><td class="check">✓ Advanced</td></tr><tr><td>E-Commerce</td><td>Not Included</td><td>Not Included</td><td class="check">✓ Up to 50 Products</td><td class="check">✓ Unlimited</td></tr><tr><td>Blog / CMS</td><td>Not Included</td><td>Not Included</td><td class="check">✓ Included</td><td class="check">✓ Advanced</td></tr><tr><td>API Integration</td><td>Not Included</td><td>Not Included</td><td>Basic</td><td class="check">✓ Full Integration</td></tr><tr><td>Animations &amp; Effects</td><td>Not Included</td><td>Standard</td><td>Standard</td><td class="check">✓ Advanced</td></tr><tr><td>Membership / Subscriptions</td><td>Not Included</td><td>Not Included</td><td>Not Included</td><td class="check">✓ Included</td></tr><tr><td>Mobile Responsive</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td></tr><tr><td>SSL &amp; Security</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td></tr><tr><td>Google Analytics</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td><td class="check">✓ Yes</td></tr><tr><td>Free Support After Launch</td><td>30 days</td><td>30 days</td><td>60 days</td><td>3 months</td></tr><tr><td>Revision Rounds</td><td>1</td><td>2</td><td>4</td><td>Unlimited</td></tr><tr><td>Performance Optimization</td><td>Standard</td><td>Standard</td><td class="check">✓ Advanced</td><td class="check">✓ Premium</td></tr><tr><td>Priority Support</td><td>Not Included</td><td>Not Included</td><td>Not Included</td><td class="check">✓ Included</td></tr></tbody>
         </table>
       </div>
     </div>
-    <!-- Custom Solutions Box -->
-    <div class="glass" style="padding: 3rem 2rem; border-radius: 1.5rem; text-align: center; margin-top: 3rem;">
-      <h3 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; font-family: 'HeliosExt', 'Inter', sans-serif;">Custom Solutions</h3>
-      <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto;">Need something completely different? Multi-site networks, progressive web apps, membership platforms, or specialized platforms? We build custom solutions tailored to your exact business needs.</p>
-      <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" class="glass-button" style="padding: 1rem 2rem; font-size: 1rem;">Discuss Your Project</a>
+
+    <div class="cta-card rv" style="margin-top:clamp(40px,5vw,64px);text-align:center;padding:clamp(36px,5vw,64px)">
+      <div class="bg" aria-hidden="true" style="opacity:.35"></div>
+      <h3 style="font-size:clamp(28px,3.4vw,44px);margin-bottom:16px">Custom <em class="s grad">Solutions</em></h3>
+      <p style="color:var(--muted);max-width:600px;margin:0 auto 28px;line-height:1.7">Need something completely different? Multi-site networks, progressive web apps, membership platforms, or specialized platforms? We build custom solutions tailored to your exact business needs.</p>
+      <a class="btn btn-glass" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener">Discuss Your Project</a>
     </div>
-
-  </section>
-
-  <!-- Design + Management Plans — shown for Design+Mgmt path -->
-  <section class="container path-section" id="section-design-mgmt">
-    <h2>Design + <span class="gradient-text">Management</span> Plans</h2>
-    <p class="section-subtitle">We host and manage your site. Cancel anytime. Includes a new website build.</p>
-
-    <div class="mgmt-grid" id="mgmt-grid">
-      <!-- Base $300 -->
-      <div class="mgmt-card glass">
-        <div class="mgmt-price">Core Site</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">Perfect for service businesses, contractors, and agencies that need a clean, professional web presence with minimal overhead.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">2 Updates/mo</span>
-          <span class="mgmt-badge">48hr Response</span>
-          <span class="mgmt-badge">No E-Commerce</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Hosting, domain & SSL included</li>
-          <li>2 content/design updates per month</li>
-          <li>Email form notifications</li>
-          <li>Lead nurture basics</li>
-          <li>48-hour response time</li>
-          <li class="not-included">SMS notifications (upsell)</li>
-          <li class="not-included">Google Review automation (upsell)</li>
-          <li class="not-included">E-commerce / products</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-
-      <!-- Growth $500 (Featured) -->
-      <div class="mgmt-card glass featured">
-        <div class="popular-badge">POPULAR</div>
-        <div class="mgmt-price">Growing Business</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">For businesses ready to grow. Includes e-commerce capability up to 25 products and faster support response for a more active online presence.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">4 Updates/mo</span>
-          <span class="mgmt-badge">36hr Response</span>
-          <span class="mgmt-badge">Up to 100 Products</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Everything in Core Site PLUS</li>
-          <li>4 content/design updates per month</li>
-          <li>E-commerce (up to 100 products)</li>
-          <li>36-hour response time</li>
-          <li>Quarterly strategy review</li>
-          <li class="not-included">SMS notifications (upsell)</li>
-          <li class="not-included">Google Review automation (upsell)</li>
-          <li class="not-included">Local ads management (upsell)</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-primary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-
-      <!-- Enterprise $1000 -->
-      <div class="mgmt-card glass">
-        <div class="mgmt-price">Full Growth</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">Complete web presence management for e-commerce brands and growth-focused businesses. Unlimited updates, ad management, and monthly reporting included.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">Unlimited Updates</span>
-          <span class="mgmt-badge">24hr Response</span>
-          <span class="mgmt-badge">Unlimited Products</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Everything in Growing Business PLUS</li>
-          <li>Unlimited content/design updates</li>
-          <li>Unlimited e-commerce products</li>
-          <li>24-hour response time</li>
-          <li>SMS automation included <span style="color:rgba(0,255,150,0.6);font-size:0.8rem;">($500 value)</span></li>
-          <li>Local ads management up to $1,500/mo spend <span style="color:rgba(0,255,150,0.6);font-size:0.8rem;">($500 value)</span></li>
-          <li>Monthly reporting</li>
-          <li>Strategy calls on request</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-    </div>
-    <div class="pkg-dots" id="mgmt-dots" style="display: none;">
-      <div class="pkg-dot active"></div>
-      <div class="pkg-dot"></div>
-      <div class="pkg-dot"></div>
-    </div>
-  </section>
-
-  <!-- Management Only — shown for Management Only path -->
-  <section class="container path-section" id="section-mgmt-only">
-    <h2>Management <span class="gradient-text">Only</span> Plans</h2>
-    <p class="section-subtitle">We host and manage your site. Cancel anytime. Includes migration of your existing site.</p>
-
-    <div class="mgmt-grid">
-      <div class="mgmt-card glass">
-        <div class="mgmt-price">Core Site</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">Perfect for service businesses, contractors, and agencies that need a clean, professional web presence with minimal overhead.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">2 Updates/mo</span>
-          <span class="mgmt-badge">48hr Response</span>
-          <span class="mgmt-badge">No E-Commerce</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Hosting, domain & SSL included</li>
-          <li>2 content/design updates per month</li>
-          <li>Email form notifications</li>
-          <li>Lead nurture basics</li>
-          <li>48-hour response time</li>
-          <li class="not-included">SMS notifications (upsell)</li>
-          <li class="not-included">Google Review automation (upsell)</li>
-          <li class="not-included">E-commerce / products</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-      <div class="mgmt-card glass featured">
-        <div class="popular-badge">POPULAR</div>
-        <div class="mgmt-price">Growing Business</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">For businesses ready to grow. Includes e-commerce capability up to 25 products and faster support response for a more active online presence.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">4 Updates/mo</span>
-          <span class="mgmt-badge">36hr Response</span>
-          <span class="mgmt-badge">Up to 100 Products</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Everything in Core Site PLUS</li>
-          <li>4 content/design updates per month</li>
-          <li>E-commerce (up to 100 products)</li>
-          <li>36-hour response time</li>
-          <li>Quarterly strategy review</li>
-          <li class="not-included">SMS notifications (upsell)</li>
-          <li class="not-included">Google Review automation (upsell)</li>
-          <li class="not-included">Local ads management (upsell)</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-primary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-      <div class="mgmt-card glass">
-        <div class="mgmt-price">Full Growth</div>
-        <p class="mgmt-period">per month</p>
-        <p class="mgmt-desc">Complete web presence management for e-commerce brands and growth-focused businesses. Unlimited updates, ad management, and monthly reporting included.</p>
-        <div class="mgmt-meta">
-          <span class="mgmt-badge">Unlimited Updates</span>
-          <span class="mgmt-badge">24hr Response</span>
-          <span class="mgmt-badge">Unlimited Products</span>
-        </div>
-        <ul class="mgmt-features">
-          <li>Everything in Growing Business PLUS</li>
-          <li>Unlimited content/design updates</li>
-          <li>Unlimited e-commerce products</li>
-          <li>24-hour response time</li>
-          <li>SMS automation included <span style="color:rgba(0,255,150,0.6);font-size:0.8rem;">($500 value)</span></li>
-          <li>Local ads management up to $1,500/mo spend <span style="color:rgba(0,255,150,0.6);font-size:0.8rem;">($500 value)</span></li>
-          <li>Monthly reporting</li>
-          <li>Strategy calls on request</li>
-        </ul>
-        <div class="mgmt-cta">
-          <button class="btn-secondary" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')">Get Started</button>
-          <p class="commitment-note">6-month minimum commitment</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- View Less anchor (shown when all sections open) -->
-  <div id="view-less-wrap" style="display:none; text-align:center; padding: 1rem 0 2rem;">
-    <button class="view-all-link" onclick="collapseAll()">↑ View less — collapse all</button>
   </div>
+</section>
+<section class="sec tight path-section" id="section-design-mgmt">
+  <div class="wrap">
+    <div class="head rv"><h2>Design + <em class="s grad">Management</em> Plans</h2><p class="sub">We host and manage your site. Cancel anytime. Includes a new website build.</p></div>
+    <div class="grid g3 snap" id="mgmt-grid" data-dots><article class="card mgmt-card rv"><h3 class="price" style="margin-top:0">Core Site</h3><p class="note">per month</p><p>Perfect for service businesses, contractors, and agencies that need a clean, professional web presence with minimal overhead.</p><div class="chips"><span class="chip">2 Updates/mo</span><span class="chip">48hr Response</span><span class="chip">No E-Commerce</span></div><ul class="ticks"><li>Hosting, domain &amp; SSL included</li><li>2 content/design updates per month</li><li>Email form notifications</li><li>Lead nurture basics</li><li>48-hour response time</li><li class="no">SMS notifications (upsell)</li><li class="no">Google Review automation (upsell)</li><li class="no">E-commerce / products</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article><article class="card mgmt-card rv pop"><span class="badge">POPULAR</span><h3 class="price" style="margin-top:0">Growing Business</h3><p class="note">per month</p><p>For businesses ready to grow. Includes e-commerce capability up to 25 products and faster support response for a more active online presence.</p><div class="chips"><span class="chip">4 Updates/mo</span><span class="chip">36hr Response</span><span class="chip">Up to 100 Products</span></div><ul class="ticks"><li>Everything in Core Site PLUS</li><li>4 content/design updates per month</li><li>E-commerce (up to 100 products)</li><li>36-hour response time</li><li>Quarterly strategy review</li><li class="no">SMS notifications (upsell)</li><li class="no">Google Review automation (upsell)</li><li class="no">Local ads management (upsell)</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-solid" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article><article class="card mgmt-card rv"><h3 class="price" style="margin-top:0">Full Growth</h3><p class="note">per month</p><p>Complete web presence management for e-commerce brands and growth-focused businesses. Unlimited updates, ad management, and monthly reporting included.</p><div class="chips"><span class="chip">Unlimited Updates</span><span class="chip">24hr Response</span><span class="chip">Unlimited Products</span></div><ul class="ticks"><li>Everything in Growing Business PLUS</li><li>Unlimited content/design updates</li><li>Unlimited e-commerce products</li><li>24-hour response time</li><li>SMS automation included <span class="val">($500 value)</span></li><li>Local ads management up to $1,500/mo spend <span class="val">($500 value)</span></li><li>Monthly reporting</li><li>Strategy calls on request</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article></div>
+  </div>
+</section>
+<section class="sec tight path-section" id="section-mgmt-only">
+  <div class="wrap">
+    <div class="head rv"><h2>Management <em class="s grad">Only</em> Plans</h2><p class="sub">We host and manage your site. Cancel anytime. Includes migration of your existing site.</p></div>
+    <div class="grid g3 snap" data-dots><article class="card mgmt-card rv"><h3 class="price" style="margin-top:0">Core Site</h3><p class="note">per month</p><p>Perfect for service businesses, contractors, and agencies that need a clean, professional web presence with minimal overhead.</p><div class="chips"><span class="chip">2 Updates/mo</span><span class="chip">48hr Response</span><span class="chip">No E-Commerce</span></div><ul class="ticks"><li>Hosting, domain &amp; SSL included</li><li>2 content/design updates per month</li><li>Email form notifications</li><li>Lead nurture basics</li><li>48-hour response time</li><li class="no">SMS notifications (upsell)</li><li class="no">Google Review automation (upsell)</li><li class="no">E-commerce / products</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article><article class="card mgmt-card rv pop"><span class="badge">POPULAR</span><h3 class="price" style="margin-top:0">Growing Business</h3><p class="note">per month</p><p>For businesses ready to grow. Includes e-commerce capability up to 25 products and faster support response for a more active online presence.</p><div class="chips"><span class="chip">4 Updates/mo</span><span class="chip">36hr Response</span><span class="chip">Up to 100 Products</span></div><ul class="ticks"><li>Everything in Core Site PLUS</li><li>4 content/design updates per month</li><li>E-commerce (up to 100 products)</li><li>36-hour response time</li><li>Quarterly strategy review</li><li class="no">SMS notifications (upsell)</li><li class="no">Google Review automation (upsell)</li><li class="no">Local ads management (upsell)</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-solid" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article><article class="card mgmt-card rv"><h3 class="price" style="margin-top:0">Full Growth</h3><p class="note">per month</p><p>Complete web presence management for e-commerce brands and growth-focused businesses. Unlimited updates, ad management, and monthly reporting included.</p><div class="chips"><span class="chip">Unlimited Updates</span><span class="chip">24hr Response</span><span class="chip">Unlimited Products</span></div><ul class="ticks"><li>Everything in Growing Business PLUS</li><li>Unlimited content/design updates</li><li>Unlimited e-commerce products</li><li>24-hour response time</li><li>SMS automation included <span class="val">($500 value)</span></li><li>Local ads management up to $1,500/mo spend <span class="val">($500 value)</span></li><li>Monthly reporting</li><li>Strategy calls on request</li></ul><div class="mgmt-cta" style="margin-top:auto"><a style="width:100%;justify-content:center" class="btn btn-glass" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Get Started</a><p class="commit">6-month minimum commitment</p></div></article></div>
+  </div>
+</section>
 
-  <!-- One-Time Upsells -->
-  <section class="container">
-    <h2>Power-Up <span class="gradient-text">Add-Ons</span></h2>
-    <p class="section-subtitle">One-time services that unlock more reach, more leads, and more automation. Available to all management clients.</p>
-
-    <div class="upsell-grid">
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">📍</div>
-        <div class="upsell-name">Google Business Profile Optimization</div>
-        <div class="upsell-price">$500</div>
-        <p class="upsell-desc">Full audit and optimization of your Google Business Profile — hours, photos, categories, service areas, review link, and attributes. Includes a before/after report.</p>
-      </div>
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">🔍</div>
-        <div class="upsell-name">SEO Foundation</div>
-        <div class="upsell-price">$500</div>
-        <p class="upsell-desc">Keyword research, on-page optimization, schema markup, and a local citation audit. Delivered as a full SEO report with a 90-day action plan.</p>
-      </div>
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">⭐</div>
-        <div class="upsell-name">Google Review Automation Setup</div>
-        <div class="upsell-price">$500</div>
-        <p class="upsell-desc">We build an automated review funnel that steers happy customers to your Google listing and filters negative feedback before it goes public. More stars, less risk.</p>
-      </div>
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">💬</div>
-        <div class="upsell-name">SMS Notifications</div>
-        <div class="upsell-price">$500</div>
-        <p class="upsell-desc">Get a text the moment someone fills out your contact form. Never miss a lead again. Email form notifications are included free — SMS is the upgrade.</p>
-      </div>
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">📲</div>
-        <div class="upsell-name">SMS Campaign Templates</div>
-        <div class="upsell-price">$500</div>
-        <p class="upsell-desc">4-6 ready-to-send SMS campaigns: review requests, appointment reminders, win-back sequences, and promos. Copy-paste ready — you send them manually.</p>
-      </div>
-      <div class="upsell-card glass" onclick="window.open('https://calendly.com/vaura/general-discovery', '_blank')" style="cursor: pointer;">
-        <div class="upsell-icon">⚡</div>
-        <div class="upsell-name">SMS Campaign Automation</div>
-        <div class="upsell-price">+$500</div>
-        <p class="upsell-desc">Add this to SMS Campaign Templates and we automate everything — triggers, timing, follow-ups. Set-and-forget. Requires SMS Campaign Templates ($500) first.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ad Management Pricing -->
-  <section class="container ad-mgmt-section">
-    <h2>Local Ads <span class="gradient-text">Management</span></h2>
-    <p class="section-subtitle">We manage your Google Local Service Ads so you get more calls and leads. Ad spend is billed directly by Google — this is just our management fee.</p>
-
-    <div class="ad-table-wrap">
-      <table class="ad-table glass" style="border-radius: 1.5rem; overflow: hidden;">
-        <thead>
-          <tr>
-            <th>Monthly Ad Spend (paid to Google)</th>
-            <th>Management Fee</th>
-            <th>Included In</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Up to $1,500/mo</td>
-            <td class="ad-highlight">Included</td>
-            <td>$1,000/mo plan</td>
-          </tr>
-          <tr>
-            <td>Up to $1,500/mo</td>
-            <td class="ad-highlight">$500/mo</td>
-            <td>Standalone add-on</td>
-          </tr>
-          <tr>
-            <td>$1,500 – $3,500/mo</td>
-            <td class="ad-highlight">$750/mo</td>
-            <td>Standalone add-on</td>
-          </tr>
-          <tr>
-            <td>$3,500+/mo</td>
-            <td class="ad-highlight">20% of ad spend</td>
-            <td>Standalone add-on</td>
-          </tr>
-        </tbody>
+<div id="view-less-wrap" class="center" style="display:none;padding:0 0 40px">
+  <button class="view-all-link" type="button" onclick="collapseAll()">↑ View less — collapse all</button>
+</div>
+<section class="sec" id="add-ons">
+  <div class="orb v" data-depth="0.14" style="width:480px;height:480px;left:35%;top:4%"></div>
+  <div class="wrap">
+    <div class="head rv"><h2>Power-Up <em class="s grad">Add-Ons</em></h2><p class="sub">One-time services that unlock more reach, more leads, and more automation. Available to all management clients.</p></div>
+    <div class="grid g3 snap" data-dots><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div class="row"><h3>Google Business Profile Optimization</h3><span class="amt gtext">$500</span></div><p>Full audit and optimization of your Google Business Profile — hours, photos, categories, service areas, review link, and attributes. Includes a before/after report.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><div class="row"><h3>SEO Foundation</h3><span class="amt gtext">$500</span></div><p>Keyword research, on-page optimization, schema markup, and a local citation audit. Delivered as a full SEO report with a 90-day action plan.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9z"/></svg></span><div class="row"><h3>Google Review Automation Setup</h3><span class="amt gtext">$500</span></div><p>We build an automated review funnel that steers happy customers to your Google listing and filters negative feedback before it goes public. More stars, less risk.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div class="row"><h3>SMS Notifications</h3><span class="amt gtext">$500</span></div><p>Get a text the moment someone fills out your contact form. Never miss a lead again. Email form notifications are included free — SMS is the upgrade.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><div class="row"><h3>SMS Campaign Templates</h3><span class="amt gtext">$500</span></div><p>4-6 ready-to-send SMS campaigns: review requests, appointment reminders, win-back sequences, and promos. Copy-paste ready — you send them manually.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="card addon rv" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><div class="row"><h3>SMS Campaign Automation</h3><span class="amt gtext">+$500</span></div><p>Add this to SMS Campaign Templates and we automate everything — triggers, timing, follow-ups. Set-and-forget. Requires SMS Campaign Templates ($500) first.</p><span class="go"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div>
+  </div>
+</section>
+<section class="sec tight ad-mgmt-section" id="ads">
+  <div class="wrap">
+    <div class="head rv"><h2>Local Ads <em class="s grad">Management</em></h2><p class="sub">We manage your Google Local Service Ads so you get more calls and leads. Ad spend is billed directly by Google — this is just our management fee.</p></div>
+    <div class="table-wrap rv">
+      <table class="table ads ad-table">
+        <thead><tr><th>Monthly Ad Spend (paid to Google)</th><th>Management Fee</th><th>Included In</th></tr></thead>
+        <tbody><tr><td>Up to $1,500/mo</td><td class="hl gtext">Included</td><td>$1,000/mo plan</td></tr><tr><td>Up to $1,500/mo</td><td class="hl gtext">$500/mo</td><td>Standalone add-on</td></tr><tr><td>$1,500 – $3,500/mo</td><td class="hl gtext">$750/mo</td><td>Standalone add-on</td></tr><tr><td>$3,500+/mo</td><td class="hl gtext">20% of ad spend</td><td>Standalone add-on</td></tr></tbody>
       </table>
     </div>
-    <p style="text-align: center; color: rgba(255,255,255,0.35); font-size: 0.8rem; margin-top: 1rem;">Ad management includes campaign setup, keyword strategy, quality monitoring, and monthly performance reports.</p>
-  </section>
-
-  <!-- What's Always Included -->
-  <section class="container always-included-section">
-    <h2>What's <span class="gradient-text">Always</span> Included</h2>
-
-    <!-- Desktop static grid -->
-    <div class="always-included-static" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🔒 Security & Performance</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p>
-      </div>
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📱 Mobile First</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every website is optimized for tablets and phones. Responsive design is not optional.</p>
-      </div>
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">⚡ Speed First</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p>
-      </div>
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🎯 SEO Ready</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p>
-      </div>
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📊 Analytics Setup</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p>
-      </div>
-      <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;">
-        <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🤝 Your Support</h4>
-        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Free support included. Fast response times and dedicated assistance throughout the project.</p>
-      </div>
+    <p class="fine">Ad management includes campaign setup, keyword strategy, quality monitoring, and monthly performance reports.</p>
+  </div>
+</section>
+<section class="sec always-included-section" id="included">
+  <div class="wrap">
+    <div class="head rv"><h2>What's <em class="s grad">Always</em> Included</h2></div>
+    <div class="grid g3 always-static"><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h4>Security &amp; Performance</h4><p style="margin:0">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p></div><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h4>Mobile First</h4><p style="margin:0">Every website is optimized for tablets and phones. Responsive design is not optional.</p></div><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><h4>Speed First</h4><p style="margin:0">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p></div><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h4>SEO Ready</h4><p style="margin:0">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p></div><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></span><h4>Analytics Setup</h4><p style="margin:0">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p></div><div class="card always-card rv"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><h4>Your Support</h4><p style="margin:0">Free support included. Fast response times and dedicated assistance throughout the project.</p></div></div>
+    <div class="always-track-wrap" aria-label="What's always included" role="region" tabindex="0">
+      <div class="always-track"><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h4>Security &amp; Performance</h4><p style="margin:0">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h4>Mobile First</h4><p style="margin:0">Every website is optimized for tablets and phones. Responsive design is not optional.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><h4>Speed First</h4><p style="margin:0">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h4>SEO Ready</h4><p style="margin:0">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></span><h4>Analytics Setup</h4><p style="margin:0">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><h4>Your Support</h4><p style="margin:0">Free support included. Fast response times and dedicated assistance throughout the project.</p></div><div style="display:contents" aria-hidden="true"><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h4>Security &amp; Performance</h4><p style="margin:0">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h4>Mobile First</h4><p style="margin:0">Every website is optimized for tablets and phones. Responsive design is not optional.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span><h4>Speed First</h4><p style="margin:0">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h4>SEO Ready</h4><p style="margin:0">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg></span><h4>Analytics Setup</h4><p style="margin:0">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p></div><div class="card always-card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><h4>Your Support</h4><p style="margin:0">Free support included. Fast response times and dedicated assistance throughout the project.</p></div></div></div>
     </div>
-
-    <!-- Mobile auto-scroll carousel -->
-    <div class="always-included-track-wrap">
-      <div class="always-included-track">
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🔒 Security & Performance</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📱 Mobile First</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every website is optimized for tablets and phones. Responsive design is not optional.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">⚡ Speed First</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🎯 SEO Ready</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📊 Analytics Setup</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🤝 Your Support</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Free support included. Fast response times and dedicated assistance throughout the project.</p></div>
-        <!-- duplicate for seamless loop -->
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🔒 Security & Performance</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">SSL certificate, CDN setup, automatic backups, and performance monitoring on all packages.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📱 Mobile First</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every website is optimized for tablets and phones. Responsive design is not optional.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">⚡ Speed First</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Optimized for fast load times. We focus on performance metrics that impact SEO and user experience.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🎯 SEO Ready</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Every site includes SEO best practices, structured data, sitemaps, and Google integration.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">📊 Analytics Setup</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Google Analytics 4, conversion tracking, and heat mapping built in from day one.</p></div>
-        <div class="glass always-card" style="padding: 2rem; border-radius: 1.5rem;"><h4 style="font-size: 1.1rem; margin-bottom: 1rem;">🤝 Your Support</h4><p style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">Free support included. Fast response times and dedicated assistance throughout the project.</p></div>
-      </div>
+  </div>
+</section>
+<section class="sec tight work-section" id="work-section">
+  <div class="wrap">
+    <div class="head rv"><h2>Our <em class="s grad">Work</em></h2><p class="sub">Real businesses. Real results. Watch the demos and see what we build.</p></div>
+    <div class="carousel-wrapper rv">
+      <div class="carousel-track" id="carousel-track"><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Matrix Medical</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full e-commerce buildout for a Minneapolis medical equipment supplier. Custom menus, advanced product filters, wishlist, low-stock alerts, and a seamless buying experience for healthcare facilities nationwide.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1113737425?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Matrix Medical"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pure Mechanical LLC</h3><span class="year">2023</span></div></div><p class="work-card-desc">Professional website for a mechanical services company. Clean, responsive design built to generate leads and communicate reliability to residential and commercial clients.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1114407869?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pure Mechanical LLC"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Rich Nerdz</h3><span class="year">2025</span></div></div><p class="work-card-desc">Streetwear brand identity and e-commerce experience. Bold visuals, custom graphics, and a shopping experience that matches the energy of the brand.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115361252?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Rich Nerdz"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Car Club Rental</h3><span class="year">2023</span></div></div><p class="work-card-desc">Premium vehicle rental platform designed to showcase an exotic and luxury fleet. Built for seamless online bookings with a high-end look and feel that converts browsers into renters.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115624298?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Car Club Rental"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Ocean Wholesale</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full-scale wholesale marketplace for a brand that creates waves. Complete branding, product catalog architecture, and a buyer-first shopping experience built to scale.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115631198?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ocean Wholesale"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Mow Bros</h3><span class="year">2023</span></div></div><p class="work-card-desc">Lead-generating website for a Minnesota landscaping company. Responsive design with service pages, galleries, and a booking flow that turns local search traffic into booked jobs year-round.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115635752?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Mow Bros"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Jappy</h3><span class="year">2024</span></div></div><p class="work-card-desc">Sleek brand website with a distinct identity and a modern digital presence. Crafted to capture the brand's personality and connect with its audience online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115639888?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Jappy"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Moneybag Exotics</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full brand experience for a streetwear label built on ambition. Custom logos, moving images, animations, and fonts — from their sold-out first drop to an ongoing collection that lives at the intersection of risk and style.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115645900?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Moneybag Exotics"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pet Beds For You</h3><span class="year">2019</span></div></div><p class="work-card-desc">E-commerce website for a pet products brand. Clean product presentation, intuitive navigation, and a design that communicates trust and warmth to pet owners shopping online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115648562?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pet Beds For You"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>VoxVera.io</h3><span class="year">2024</span></div></div><p class="work-card-desc">End-to-end brand launch for a next-generation AI audio dubbing platform. Pitch deck, logo, full site design, and project coordination — concept to launch, executed flawlessly.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115659680?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VoxVera"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>LumaSkin</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full visual identity, branding, product imagery, and site design for a skincare and wellness device brand. A seamless online shopping experience highlighting promotions, product details, and customer engagement.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115663555?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="LumaSkin"></iframe></div></article></div>
     </div>
-  </section>
-
-  <!-- Our Work Carousel -->
-  <section class="work-section" id="work-section">
-    <div class="container">
-      <h2>Our <span class="gradient-text">Work</span></h2>
-      <p class="section-subtitle" style="margin-bottom: 2rem;">Real businesses. Real results. Watch the demos and see what we build.</p>
-
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="carousel-track">
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Matrix Medical</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full e-commerce buildout for a Minneapolis medical equipment supplier. Custom menus, advanced product filters, wishlist, low-stock alerts, and a seamless buying experience for healthcare facilities nationwide.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1113737425?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Matrix Medical"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Pure Mechanical LLC</h3><span class="year">2023</span></div></div><p class="work-card-desc">Professional website for a mechanical services company. Clean, responsive design built to generate leads and communicate reliability to residential and commercial clients.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1114407869?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pure Mechanical LLC"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Rich Nerdz</h3><span class="year">2025</span></div></div><p class="work-card-desc">Streetwear brand identity and e-commerce experience. Bold visuals, custom graphics, and a shopping experience that matches the energy of the brand.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115361252?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Rich Nerdz"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Car Club Rental</h3><span class="year">2023</span></div></div><p class="work-card-desc">Premium vehicle rental platform designed to showcase an exotic and luxury fleet. Built for seamless online bookings with a high-end look and feel that converts browsers into renters.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115624298?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Car Club Rental"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Ocean Wholesale</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full-scale wholesale marketplace for a brand that creates waves. Complete branding, product catalog architecture, and a buyer-first shopping experience built to scale.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115631198?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ocean Wholesale"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Mow Bros</h3><span class="year">2023</span></div></div><p class="work-card-desc">Lead-generating website for a Minnesota landscaping company. Responsive design with service pages, galleries, and a booking flow that turns local search traffic into booked jobs year-round.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115635752?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Mow Bros"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Jappy</h3><span class="year">2024</span></div></div><p class="work-card-desc">Sleek brand website with a distinct identity and a modern digital presence. Crafted to capture the brand's personality and connect with its audience online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115639888?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Jappy"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Moneybag Exotics</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full brand experience for a streetwear label built on ambition. Custom logos, moving images, animations, and fonts — from their sold-out first drop to an ongoing collection that lives at the intersection of risk and style.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115645900?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Moneybag Exotics"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>Pet Beds For You</h3><span class="year">2019</span></div></div><p class="work-card-desc">E-commerce website for a pet products brand. Clean product presentation, intuitive navigation, and a design that communicates trust and warmth to pet owners shopping online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115648562?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pet Beds For You"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>VoxVera.io</h3><span class="year">2024</span></div></div><p class="work-card-desc">End-to-end brand launch for a next-generation AI audio dubbing platform. Pitch deck, logo, full site design, and project coordination — concept to launch, executed flawlessly.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115659680?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VoxVera"></iframe></div></div>
-          <div class="work-card glass"><div class="work-card-header"><div class="work-card-meta"><h3>LumaSkin</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full visual identity, branding, product imagery, and site design for a skincare and wellness device brand. A seamless online shopping experience highlighting promotions, product details, and customer engagement.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115663555?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="LumaSkin"></iframe></div></div>
-        </div>
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="carousel-btn" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-
-      <div class="view-more-wrap">
-        <button id="view-more-btn">
-          <span id="btn-label">View All Work</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </button>
-      </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn" type="button" aria-label="Previous project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button class="carousel-btn" id="next-btn" type="button" aria-label="Next project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2><span class="gradient-text">Ready to Get Started?</span></h2>
-    <p class="cta-text">Let's find the right plan for your business. Book a free 15-minute call and we'll map it out together.</p>
-    <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" class="glass-button" style="padding: 1rem 2rem; font-size: 1rem;">Book Your Free Consultation</a>
-  </section>
-
-  <!-- Google Reviews (floating bubbles) -->
-  <div class="reviews-section">
-    <div class="reviews-section-inner">
-      <div class="reviews-label"><span class="google-dot"></span>Google Reviews</div>
-      <div class="reviews-stars-row">
-        <span class="stars">★★★★★</span>
-        <span>5.0 &nbsp;·&nbsp; Verified on Google</span>
-        <a href="https://g.page/r/CZaO4TNAzK-NEBM/review" target="_blank" style="color:#F4B400;font-size:0.85rem;text-decoration:none;font-weight:600;">Leave a review →</a>
-      </div>
-      <div class="reviews-bubble-wrap">
-        <div class="review-bubble rb-1"><div class="bubble-header"><div class="bubble-avatar">TS</div><div><div class="bubble-name">Tim Siegel</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"Benji did a great job on our Shopify site. The performance, accessibility and SEO are solid a year after launch, way better than my other WordPress sites ever performed. I highly recommend!"</p></div>
-        <div class="review-bubble rb-2"><div class="bubble-header"><div class="bubble-avatar" style="background:linear-gradient(135deg,#00ccff,#c850ff);">JC</div><div><div class="bubble-name">Jared Crawford-Akeredolu</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"I cannot recommend Vaura enough! From start to finish, their team delivered top-notch branding and marketing services that exceeded my expectations."</p></div>
-        <div class="review-bubble rb-3"><div class="bubble-header"><div class="bubble-avatar" style="background:linear-gradient(135deg,#F4B400,#00ff96);">KT</div><div><div class="bubble-name">Kelly Torp</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"Benji did our website and was great to work with! He brought professionalism and quality which in turn gave us a great product! I would recommend 100%!"</p></div>
-        <div class="review-bubble rb-4"><div class="bubble-header"><div class="bubble-avatar" style="background:linear-gradient(135deg,#00ff96,#00ccff);">MR</div><div><div class="bubble-name">Marjae Rouser</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"Personally, I received more than exceptional service. Really transparent about the process and projections were accurate! I'm glad I reached out."</p></div>
-        <div class="review-bubble rb-5"><div class="bubble-header"><div class="bubble-avatar" style="background:linear-gradient(135deg,#c850ff,#00ccff);">AE</div><div><div class="bubble-name">Aiden Evans</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"Great communication and made it easy to work with them!! I'm very pleased."</p></div>
-        <div class="review-bubble rb-6"><div class="bubble-header"><div class="bubble-avatar" style="background:linear-gradient(135deg,#00ccff,#F4B400);">JS</div><div><div class="bubble-name">Japnoor Singh</div><div class="bubble-stars">★★★★★</div></div></div><p class="bubble-text">"Great communication. Good work. Couldn't ask for more."</p></div>
+    <div class="view-more-wrap">
+      <button id="view-more-btn" class="btn btn-glass" type="button" aria-expanded="false" aria-controls="carousel-track">
+        <span id="btn-label">View All Work</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="width:14px;height:14px"><path d="m3 6 5 5 5-5"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+<section class="sec contact" id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-card rv">
+      <div class="bg" data-depth="0.18" aria-hidden="true"></div>
+      <h2>Ready to Get <em class="s grad">Started?</em></h2>
+      <p style="color:var(--muted);max-width:600px;margin:22px 0 0;font-size:18px">Let's find the right plan for your business. Book a free 15-minute call and we'll map it out together.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener">Book Your Free Consultation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-glass" href="tel:+17634478781">Call (763) 447-8781</a>
       </div>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="packages.html">Website Packages</a>
-        <a href="photovideo.html">Photo / Video</a>
-        <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank">Contact Us Today</a>
-      </div>
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/vaura.agency" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.facebook.com/vaura.agency" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.tiktok.com/@vaura.agency" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" aria-label="Digital Business Card" class="popl"><i class="fa-solid fa-address-card"></i></a>
-        <a href="https://share.google/mV0X8NOunWxULwUeG" target="_blank" aria-label="Google Reviews" class="google"><i class="fa-brands fa-google"></i></a>
-      </div>
-      <div class="footer-bottom">
-        <img src="vaura-logo-white.png" alt="VAURA" style="height: 90px; width: auto; opacity: 0.6; margin-bottom: 0.5rem;">
-        <p>Elevate your online presence.</p>
-        <p>&copy; 2026 VAURA Digital Branding & Marketing.</p>
+</section>
+<section class="sec" id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="rev-head rv">
+      <span class="g-pill"><i aria-hidden="true"></i>Google Reviews</span>
+      <div class="score">
+        <div class="big">5.0</div>
+        <div><span class="stars" aria-hidden="true">★★★★★</span><small>Verified on Google</small>
+          <a href="https://g.page/r/CZaO4TNAzK-NEBM/review" target="_blank" rel="noopener" style="font-size:14px;color:var(--green)">Leave a review →</a></div>
       </div>
     </div>
-  </footer>
-
-  <!-- Floating CTA -->
-  <a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" class="floating-logo glass-button">
-    <img src="Logo no writing wht.png" alt="VAURA">
-  </a>
-
-  <!-- Payment Modal -->
-  <div id="payment-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div>
-          <h2 id="package-name">Package Name</h2>
-          <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 0.25rem;" id="payment-type">One-Time Payment</p>
-        </div>
-        <button class="close-modal" onclick="closeCheckout()">×</button>
-      </div>
-
-      <form id="payment-form" class="modal-form">
-        <div class="form-group">
-          <label for="customer-name">Full Name</label>
-          <input type="text" id="customer-name" name="name" placeholder="Your name" required>
-        </div>
-
-        <div class="form-group">
-          <label for="customer-email">Email Address</label>
-          <input type="email" id="customer-email" name="email" placeholder="your@email.com" required>
-        </div>
-
-        <div id="payment-element"></div>
-
-        <div class="modal-footer">
-          <button type="button" class="modal-btn secondary" onclick="closeCheckout()">Cancel</button>
-          <button type="submit" id="payment-submit-btn" class="modal-btn primary">Complete Payment</button>
-        </div>
-      </form>
+    <div class="reviews snap" data-dots>
+      <figure class="review feat rv">
+        <blockquote>"Benji did a great job on our Shopify site. The performance, accessibility and SEO are solid a year after launch, way better than my other WordPress sites ever performed. I highly recommend!"</blockquote>
+        <figcaption><span class="av" aria-hidden="true">TS</span><div><b>Tim Siegel</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure><figure class="review rv">
+        <blockquote>"Great communication and made it easy to work with them!! I'm very pleased."</blockquote>
+        <figcaption><span class="av" aria-hidden="true">AE</span><div><b>Aiden Evans</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure><figure class="review rv">
+        <blockquote>"Benji did our website and was great to work with! He brought professionalism and quality which in turn gave us a great product! I would recommend 100%!"</blockquote>
+        <figcaption><span class="av" aria-hidden="true">KT</span><div><b>Kelly Torp</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure><figure class="review feat rv">
+        <blockquote>"I cannot recommend Vaura enough! From start to finish, their team delivered top-notch branding and marketing services that exceeded my expectations."</blockquote>
+        <figcaption><span class="av" aria-hidden="true">JC</span><div><b>Jared Crawford-Akeredolu</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure><figure class="review feat rv">
+        <blockquote>"Personally, I received more than exceptional service. Really transparent about the process and projections were accurate! I'm glad I reached out."</blockquote>
+        <figcaption><span class="av" aria-hidden="true">MR</span><div><b>Marjae Rouser</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure><figure class="review rv">
+        <blockquote>"Great communication. Good work. Couldn't ask for more."</blockquote>
+        <figcaption><span class="av" aria-hidden="true">JS</span><div><b>Japnoor Singh</b><span>★★★★★ · Google</span></div></figcaption>
+      </figure>
     </div>
   </div>
-
-  <!-- Notification Modal -->
-  <div id="notification-modal" class="notification-modal">
-    <div class="notification-content">
-      <h3 id="modal-title">Success</h3>
-      <p id="modal-message">Your payment was processed successfully.</p>
-      <button class="close-notification" id="close-notification">Close</button>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="index.html" aria-label="VAURA home"><img src="assets/mark.svg" width="54" height="35" alt=""><span>VAURA</span></a>
+        <p class="tagline">Elevate your online presence.</p>
+        <div class="socials"><a href="https://www.instagram.com/vaura.agency" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/vaura.agency" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.2-.6.6-.6z"/></svg></a><a href="https://www.tiktok.com/@vaura.agency" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.2 1.8 3.6 4 3.9v3.3a7.6 7.6 0 0 1-4-1.2v6.3a5.7 5.7 0 1 1-5.7-5.7l.9.1v3.4a2.4 2.4 0 1 0 1.5 2.2V3z"/></svg></a><a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener" aria-label="Digital Business Card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><circle cx="8.5" cy="11" r="2.4"/><path d="M5 17c.6-1.7 2-2.5 3.5-2.5S11.4 15.3 12 17"/><path d="M15 9.5h4M15 13.5h4"/></svg></a><a href="https://share.google/mV0X8NOunWxULwUeG" target="_blank" rel="noopener" aria-label="Google Reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 12h-7.5"/></svg></a></div>
+      </div>
+      <nav aria-label="Footer">
+        <div><h3>Explore</h3><a href="index.html">Home</a><a href="services.html">Services</a><a href="packages.html">Website Packages</a><a href="photovideo.html">Photo / Video</a></div>
+        <div><h3>Contact</h3><a href="tel:+17634478781">(763) 447-8781</a><a href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Book a call</a><a href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener">Contact Us Today</a><a href="https://g.page/r/CZaO4TNAzK-NEBM" target="_blank" rel="noopener">Google profile</a></div>
+        <div><h3>Follow</h3><a href="https://www.instagram.com/vaura.agency" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@vaura.agency" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/vaura.agency" target="_blank" rel="noopener">Facebook</a></div>
+      </nav>
     </div>
+    <div class="wordmark" aria-hidden="true">VAURA</div>
+    <div class="legal"><span>&copy; 2026 VAURA Digital Branding &amp; Marketing.</span><span>Digital Craftsmanship</span></div>
   </div>
+</footer>
 
-  <script src="stripe-checkout.js"></script>
-  <script>
-    // Path selector — each path shows ONLY its relevant section
-    let viewAllOpen = false;
+<a class="floating-logo" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener" aria-label="VAURA digital business card"><img src="assets/mark.svg" width="30" height="20" alt=""></a>
 
-    function selectPath(path) {
-      viewAllOpen = false;
-      document.getElementById('view-less-wrap').style.display = 'none';
-      document.getElementById('view-all-btn').textContent = '↓ Click here to view all options';
+<div class="callbar" id="callbar">
+  <a class="btn btn-glass cb-logo" href="https://popl.co/card/7kmqlK11/4/preview?showappcta=false" target="_blank" rel="noopener" aria-label="VAURA digital business card"><img src="assets/mark.svg" width="24" height="16" alt=""></a>
+  <a class="btn btn-glass" href="tel:+17634478781">Call</a>
+  <a class="btn btn-solid" href="https://calendly.com/vaura/general-discovery" target="_blank" rel="noopener">Book a call</a>
+</div>
 
-      // Clear all states
-      document.querySelectorAll('.path-card').forEach(c => {
-        c.classList.remove('selected', 'default-glow');
-      });
-      document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
+<div id="payment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="package-name">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>
+        <h2 id="package-name">Package Name</h2>
+        <p id="payment-type">One-Time Payment</p>
+      </div>
+      <button class="close-modal" type="button" onclick="closeCheckout()" aria-label="Close">×</button>
+    </div>
+    <form id="payment-form" class="modal-form">
+      <div class="form-group">
+        <label for="customer-name">Full Name</label>
+        <input type="text" id="customer-name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="customer-email">Email Address</label>
+        <input type="email" id="customer-email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div id="payment-element"></div>
+      <div class="modal-footer">
+        <button type="button" class="modal-btn secondary" onclick="closeCheckout()">Cancel</button>
+        <button type="submit" id="payment-submit-btn" class="modal-btn primary">Complete Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-      if (path === 'design-mgmt') {
-        document.getElementById('path-design-mgmt').classList.add('selected');
-        document.getElementById('section-design-mgmt').classList.add('active');
-      } else if (path === 'design-only') {
-        document.getElementById('path-design-only').classList.add('selected');
-        document.getElementById('section-design').classList.add('active');
-      } else if (path === 'mgmt-only') {
-        document.getElementById('path-mgmt-only').classList.add('selected');
-        document.getElementById('section-mgmt-only').classList.add('active');
-      }
+<div id="notification-modal" class="notification-modal" role="alertdialog" aria-labelledby="modal-title">
+  <div class="notification-content">
+    <h3 id="modal-title">Success</h3>
+    <p id="modal-message">Your payment was processed successfully.</p>
+    <button class="close-notification" id="close-notification" type="button">Close</button>
+  </div>
+</div>
+<script src="site.js"></script>
+<!-- Stripe checkout: stripe-checkout.js is not in the repo yet. Add it, then uncomment this line and the Stripe script in <head>.
+<script src="stripe-checkout.js"></script> -->
+<script>
+  // Path selector: each path shows ONLY its relevant section
+  let viewAllOpen = false;
+  const allLabel = '↓ Click here to view all options';
 
-      // Scroll to revealed section
-      setTimeout(() => {
-        const firstActive = document.querySelector('.path-section.active');
-        if (firstActive) firstActive.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
+  function refreshDots(sec) {
+    // re-measure carousels inside a section that just became visible
+    sec.querySelectorAll('[data-dots]').forEach(t => t.dispatchEvent(new Event('scroll')));
+  }
+
+  function selectPath(path) {
+    viewAllOpen = false;
+    document.getElementById('view-less-wrap').style.display = 'none';
+    document.getElementById('view-all-btn').textContent = allLabel;
+    document.querySelectorAll('.path-card').forEach(c => { c.classList.remove('selected', 'default-glow'); c.setAttribute('aria-pressed', 'false'); });
+    document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
+    const map = { 'design-mgmt': 'section-design-mgmt', 'design-only': 'section-design', 'mgmt-only': 'section-mgmt-only' };
+    const card = document.getElementById('path-' + path);
+    const sec = document.getElementById(map[path]);
+    if (card) { card.classList.add('selected'); card.setAttribute('aria-pressed', 'true'); }
+    if (sec) { sec.classList.add('active'); refreshDots(sec); }
+    setTimeout(() => {
+      const firstActive = document.querySelector('.path-section.active');
+      if (firstActive) firstActive.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }
+
+  // View All: expands all three sections in order
+  function toggleViewAll() {
+    viewAllOpen = !viewAllOpen;
+    document.querySelectorAll('.path-card').forEach(c => { c.classList.remove('selected', 'default-glow'); c.setAttribute('aria-pressed', 'false'); });
+    if (viewAllOpen) {
+      ['section-design-mgmt', 'section-design', 'section-mgmt-only'].forEach(id => { const s = document.getElementById(id); s.classList.add('active'); refreshDots(s); });
+      document.getElementById('view-less-wrap').style.display = 'block';
+      document.getElementById('view-all-btn').textContent = '↑ Collapse all options';
+      setTimeout(() => document.getElementById('section-design').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    } else {
+      collapseAll();
     }
+  }
 
-    // View All — expands all three sections in order
-    function toggleViewAll() {
-      viewAllOpen = !viewAllOpen;
-      document.querySelectorAll('.path-card').forEach(c => c.classList.remove('selected', 'default-glow'));
-      if (viewAllOpen) {
-        document.getElementById('section-design-mgmt').classList.add('active');
-        document.getElementById('section-design').classList.add('active');
-        document.getElementById('section-mgmt-only').classList.add('active');
-        document.getElementById('view-less-wrap').style.display = 'block';
-        document.getElementById('view-all-btn').textContent = '↑ Collapse all options';
-        setTimeout(() => {
-          document.getElementById('section-design-mgmt').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 80);
-      } else {
-        collapseAll();
-      }
-    }
+  function collapseAll() {
+    viewAllOpen = false;
+    document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('view-less-wrap').style.display = 'none';
+    document.getElementById('view-all-btn').textContent = allLabel;
+    document.getElementById('path-design-mgmt').classList.add('default-glow');
+    document.getElementById('path').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-    function collapseAll() {
-      viewAllOpen = false;
-      document.querySelectorAll('.path-section').forEach(s => s.classList.remove('active'));
-      document.getElementById('view-less-wrap').style.display = 'none';
-      document.getElementById('view-all-btn').textContent = '↓ Click here to view all options';
-      // Restore default glow
-      document.getElementById('path-design-mgmt').classList.add('default-glow');
-    }
+  // On load: default-glow Design+Mgmt and show its section
+  document.getElementById('path-design-mgmt').classList.add('default-glow');
+  document.getElementById('section-design-mgmt').classList.add('active');
 
-    // On load: default-glow Design+Mgmt and show its section
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('path-design-mgmt').classList.add('default-glow');
-      document.getElementById('section-design-mgmt').classList.add('active');
-    });
-
-    // Mobile menu
-    const mobileMenuBtn = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('visible');
-      mobileMenuBtn.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('visible');
-        mobileMenuBtn.classList.remove('active');
-      }
-    });
-
-    // Mobile dots for design cards
-    function setupDots(gridId, dotsId) {
-      const grid = document.getElementById(gridId);
-      const dotsContainer = document.getElementById(dotsId);
-      if (!grid || !dotsContainer) return;
-
-      function checkMobile() {
-        if (window.innerWidth <= 768) {
-          dotsContainer.style.display = 'flex';
-          const cards = grid.querySelectorAll('.design-card, .mgmt-card');
-          const dots = dotsContainer.querySelectorAll('.pkg-dot');
-          grid.addEventListener('scroll', () => {
-            const idx = Math.round(grid.scrollLeft / grid.clientWidth * (cards.length / (cards.length > 3 ? 1.22 : 1)));
-            dots.forEach((d, i) => d.classList.toggle('active', i === Math.min(idx, dots.length - 1)));
-          });
-          dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-              const cards2 = grid.querySelectorAll('.design-card, .mgmt-card');
-              if (cards2[i]) cards2[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            });
-          });
-        } else {
-          dotsContainer.style.display = 'none';
-        }
-      }
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-    }
-
-    setupDots('design-grid', 'design-dots');
-    setupDots('mgmt-grid', 'mgmt-dots');
-
-    // Work carousel
+  // Work carousel
+  (() => {
     const track = document.getElementById('carousel-track');
     const wrapper = document.querySelector('.carousel-wrapper');
     const workSection = document.getElementById('work-section');
@@ -1669,59 +346,41 @@
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     let currentIndex = 0;
-    const visibleCards = 2;
-
-    function getCardCount() { return track.querySelectorAll('.work-card').length; }
-    function isMobile() { return window.innerWidth <= 768; }
+    const isMobile = () => innerWidth <= 760;
+    const visible = () => isMobile() ? 1 : 2;
+    const cards = () => [...track.querySelectorAll('.work-card')];
+    const step = () => { const c = track.querySelector('.work-card'); return c.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 20); };
+    const maxIndex = () => Math.max(0, cards().length - visible());
 
     function updateCarousel() {
       if (workSection.classList.contains('expanded')) return;
-      const card = track.querySelector('.work-card');
-      const cardWidth = card.offsetWidth + 32;
-
+      currentIndex = Math.min(currentIndex, maxIndex());
       if (isMobile()) {
-        // On mobile, use smooth scroll to center the card
-        const scrollPos = currentIndex * cardWidth - (wrapper.offsetWidth / 2) + (cardWidth / 2);
-        wrapper.scrollLeft = Math.max(0, scrollPos);
+        track.style.transform = '';
+        wrapper.scrollTo({ left: cards()[currentIndex].offsetLeft - parseFloat(getComputedStyle(wrapper).paddingLeft), behavior: 'smooth' });
       } else {
-        // On desktop, use transform
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        track.style.transform = `translateX(-${currentIndex * step()}px)`;
       }
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex();
     }
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) { currentIndex--; updateCarousel(); }
-    });
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < getCardCount() - visibleCards) { currentIndex++; updateCarousel(); }
-    });
-
-    // Sync button state when user swipes on mobile
+    prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; updateCarousel(); } });
+    nextBtn.addEventListener('click', () => { if (currentIndex < maxIndex()) { currentIndex++; updateCarousel(); } });
     wrapper.addEventListener('scroll', () => {
       if (!isMobile()) return;
-      const card = track.querySelector('.work-card');
-      const cardWidth = card.offsetWidth + 32;
-      const scrollPos = wrapper.scrollLeft;
-      const centerPos = scrollPos + (wrapper.offsetWidth / 2);
-      currentIndex = Math.round(centerPos / cardWidth) - 1;
-      currentIndex = Math.max(0, Math.min(currentIndex, getCardCount() - visibleCards));
-    });
-
+      currentIndex = Math.round(wrapper.scrollLeft / step());
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex();
+    }, { passive: true });
     viewMoreBtn.addEventListener('click', () => {
-      workSection.classList.toggle('expanded');
-      if (workSection.classList.contains('expanded')) {
-        btnLabel.textContent = 'Show Less';
-        track.style.transform = '';
-      } else {
-        btnLabel.textContent = 'View All Work';
-        currentIndex = 0;
-        updateCarousel();
-      }
+      const open = workSection.classList.toggle('expanded');
+      viewMoreBtn.setAttribute('aria-expanded', String(open));
+      if (open) { btnLabel.textContent = 'Show Less'; track.style.transform = ''; }
+      else { btnLabel.textContent = 'View All Work'; currentIndex = 0; updateCarousel(); workSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
-    window.addEventListener('resize', updateCarousel);
-  </script>
-
-  <!-- Wave Background Animation -->
-  <script src="wave-background.js?v=2"></script>
+    addEventListener('resize', updateCarousel);
+    updateCarousel();
+  })();
+</script>
 </body>
 </html>

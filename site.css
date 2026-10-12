@@ -79,6 +79,16 @@ em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-
 .layer-front .pulse{stroke-dasharray:90 1910;animation:flow 14s linear infinite;opacity:.95}
 .layer-front .pulse:not(.core){opacity:.7}
 @keyframes flow{from{stroke-dashoffset:2000}to{stroke-dashoffset:0}}
+/* Phones: the beams re-rasterized an SVG blur filter plus a screen blend over the playing video every frame,
+   which is what made them stutter. Same look, cheaper: soft wide stroke instead of the blur, normal blend,
+   own compositor layer, and paused whenever the hero is off screen. */
+@media (max-width:860px){
+  .layer-front svg{mix-blend-mode:normal;transform:translateZ(0);backface-visibility:hidden}
+  .layer-front .pulse{filter:none!important}
+  .layer-front .pulse:not(.core){stroke-width:6;opacity:.26}
+  .layer-front .pulse.core{opacity:1}
+}
+.hero.offscreen .layer-front .pulse{animation-play-state:paused}
 .layer-mid{z-index:4;display:grid;place-items:center;text-align:center;padding:96px var(--pad) 80px}
 .hero-inner{max-width:900px}
 .mark{width:clamp(150px,22vw,250px);margin:0 auto 34px;filter:drop-shadow(0 0 40px rgba(122,232,208,.25)) drop-shadow(0 0 2px rgba(255,255,255,.6))}
@@ -284,6 +294,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 calc(40px + env(safe-area
 #mobile-menu a{text-decoration:none;padding:14px 16px;border-radius:14px;font-size:17px;color:var(--text)}
 #mobile-menu a:hover,#mobile-menu a[aria-current="page"]{background:var(--glass-2)}
 #mobile-menu .btn{justify-content:center;margin-top:8px}
+/* the generic "#mobile-menu a" color/hover rules outrank .btn-solid, which left the Book a Call button white on white */
+#mobile-menu .btn-solid,#mobile-menu .btn-solid:hover{background:var(--text);color:var(--ink)}
+#mobile-menu .btn-solid:active{background:#fff;color:var(--ink)}
 @media (max-width:860px){.menu-btn{display:grid}.nav .wrap>.btn{display:none}}
 
 /* sub-page hero */

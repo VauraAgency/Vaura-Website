@@ -30,6 +30,12 @@
     new IntersectionObserver(([e]) => { if (!e.isIntersecting) v.pause(); else if (!userPaused && !rm.matches) v.play().catch(() => {}); }).observe(v);
   }
 
+  /* ---------- pause hero beams when the hero is off screen ---------- */
+  const heroEl = $('.hero');
+  if (heroEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => heroEl.classList.toggle('offscreen', !e.isIntersecting)).observe(heroEl);
+  }
+
   /* ---------- mobile menu ---------- */
   const menuBtn = $('#menu-toggle');
   const menu = $('#mobile-menu');

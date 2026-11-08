@@ -364,6 +364,11 @@
       width: 100%; height: 100%; border: none;
     }
 
+    .site-preview { display:block; text-decoration:none; }
+    .site-preview img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+    .site-preview:hover img { transform:scale(1.04); }
+    .site-preview-cta { position:absolute; left:50%; bottom:1rem; transform:translateX(-50%); padding:.5rem 1.1rem; border-radius:9999px; background:rgba(0,0,0,.65); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.2); color:#fff; font-size:.8rem; font-weight:600; white-space:nowrap; }
+
     /* CTA Section */
     .cta-section {
       text-align: center; padding: 4rem 1.5rem;
@@ -706,6 +711,20 @@
             <div class="work-card-header"><div class="work-card-meta"><h3>LumaSkin</h3><span class="year">2025</span></div></div>
             <p class="work-card-desc">Full visual identity, branding, product imagery, and site design for a skincare and wellness device brand. A seamless online shopping experience highlighting promotions, product details, and customer engagement.</p>
             <div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115663555?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Lumaskin Website Demo"></iframe></div>
+          </div>
+
+          <!-- CGS Insurance -->
+          <div class="work-card glass">
+            <div class="work-card-header"><div class="work-card-meta"><h3>CGS Insurance</h3><span class="year">2026</span></div></div>
+            <p class="work-card-desc">Insurance and consulting website for Constant Growth Solutions. Full policy menu for individuals and businesses, partner program pages, quote and contact flow, and SEO built in from day one.</p>
+            <a class="video-wrap site-preview" href="https://constantgrowthsolutions.com" target="_blank" rel="noopener" aria-label="Visit CGS Insurance (opens in a new tab)"><img src="assets/work/cgs-insurance.webp" alt="CGS Insurance website hero" loading="lazy" decoding="async"><span class="site-preview-cta">Visit live site</span></a>
+          </div>
+
+          <!-- Connected Tulum -->
+          <div class="work-card glass">
+            <div class="work-card-header"><div class="work-card-meta"><h3>Connected Tulum</h3><span class="year">2026</span></div></div>
+            <p class="work-card-desc">Concierge, villas, and events site for Tulum. Luxury villa collection, event ticketing and tables routed straight to WhatsApp, and a design built to feel like the destination.</p>
+            <a class="video-wrap site-preview" href="https://connectedtulum.com" target="_blank" rel="noopener" aria-label="Visit Connected Tulum (opens in a new tab)"><img src="assets/work/connected-tulum.webp" alt="Connected Tulum villa" loading="lazy" decoding="async"><span class="site-preview-cta">Visit live site</span></a>
           </div>
 
         </div><!-- /carousel-track -->

@@ -29,6 +29,19 @@
 <link rel="stylesheet" href="site.css">
 <!-- Stripe checkout: re-enable together with stripe-checkout.js below
 <script async src="https://js.stripe.com/v3/"></script> -->
+<style>
+.live{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:1rem;width:100%;background:#0b0b10}
+.live img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.live iframe{position:absolute;top:0;left:0;width:1280px;height:720px;border:0;transform-origin:0 0;pointer-events:none;opacity:0;transition:opacity .6s}
+.live iframe.ready{opacity:1}
+#action-more-btn{font:inherit;cursor:pointer}
+#action-more-btn svg{transition:transform .4s var(--ease)}
+#action-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.all-work{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:34px}
+.all-work[hidden]{display:none}
+.all-work .work-card{flex:none}
+@media (max-width:760px){.all-work{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -229,10 +242,7 @@
     <div class="head rv"><h2>See It in <em class="s grad">Action</em></h2><p class="sub">Here's what a professional VAURA site looks like in the real world.</p></div>
     <div class="grid g3 snap" data-dots style="max-width:1200px;margin:0 auto">
       <article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-ambi-wine-bar/" target="_blank" rel="noopener" style="display:contents">
-        <picture style="flex:1;overflow:hidden;background:linear-gradient(135deg,rgba(11,29,23,0.8),rgba(17,41,31,0.8));display:flex;align-items:center;justify-content:center;position:relative;aspect-ratio:16/9">
-          <img src="assets/work/ambi-wine-bar.webp" alt="Ambi Wine Bar & Desserts homepage" width="1280" height="720" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,0.55) 100%);pointer-events:none"></div>
-        </picture>
+        <div class="live" data-live><img src="assets/work/ambi-wine-bar.webp" alt="Ambi Wine Bar & Desserts homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-ambi-wine-bar/" title="Ambi Wine Bar & Desserts homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
         <div style="padding:1.5rem;flex-shrink:0">
           <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Professional Design</span>
           <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Ambi Wine Bar &amp; Desserts</h3>
@@ -242,10 +252,7 @@
           </div>
         </div>
       </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-constant-growth-solutions/" target="_blank" rel="noopener" style="display:contents">
-        <picture style="flex:1;overflow:hidden;background:linear-gradient(135deg,rgba(11,29,23,0.8),rgba(17,41,31,0.8));display:flex;align-items:center;justify-content:center;position:relative;aspect-ratio:16/9">
-          <img src="assets/work/cgs-insurance.webp" alt="CGS Insurance homepage" width="1280" height="720" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,0.55) 100%);pointer-events:none"></div>
-        </picture>
+        <div class="live" data-live><img src="assets/work/cgs-insurance.webp" alt="CGS Insurance homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-constant-growth-solutions/" title="CGS Insurance homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
         <div style="padding:1.5rem;flex-shrink:0">
           <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Insurance &amp; Consulting</span>
           <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">CGS Insurance</h3>
@@ -255,10 +262,7 @@
           </div>
         </div>
       </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-connected-tulum/" target="_blank" rel="noopener" style="display:contents">
-        <picture style="flex:1;overflow:hidden;background:linear-gradient(135deg,rgba(11,29,23,0.8),rgba(17,41,31,0.8));display:flex;align-items:center;justify-content:center;position:relative;aspect-ratio:16/9">
-          <img src="assets/work/connected-tulum.webp" alt="Connected Tulum villa" width="1280" height="720" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,0.55) 100%);pointer-events:none"></div>
-        </picture>
+        <div class="live" data-live><img src="assets/work/connected-tulum.webp" alt="Connected Tulum villa" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-connected-tulum/" title="Connected Tulum villa live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
         <div style="padding:1.5rem;flex-shrink:0">
           <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Concierge &amp; Events</span>
           <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Connected Tulum</h3>
@@ -269,7 +273,8 @@
         </div>
       </a></article>
     </div>
-    <div style="text-align:center;margin-top:22px"><a class="btn btn-glass" href="work.html">View all work</a></div>
+    <div class="view-more-wrap"><button id="action-more-btn" class="btn btn-glass" type="button" aria-expanded="false" aria-controls="all-work"><span id="action-more-label">View All Work</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="width:14px;height:14px"><path d="m3 6 5 5 5-5"/></svg></button></div>
+    <div class="all-work" id="all-work" hidden></div>
   </div>
 </section>
 </main>
@@ -436,6 +441,37 @@
     addEventListener('resize', updateCarousel);
     updateCarousel();
   })();
+</script>
+<script>
+// Live site previews: scale 1280x720 iframes into their cards
+(() => {
+  const fit = el => { const f = el.querySelector('iframe'); f.style.transform = `scale(${el.clientWidth / 1280})`; };
+  document.querySelectorAll('[data-live]').forEach(el => {
+    const f = el.querySelector('iframe');
+    let loaded = false, reachable = false;
+    const show = () => { if (loaded && reachable) f.classList.add('ready'); };
+    f.addEventListener('load', () => { loaded = true; show(); });
+    fetch(f.src, { mode: 'no-cors' }).then(() => { reachable = true; show(); }).catch(() => {});
+    fit(el);
+    new ResizeObserver(() => fit(el)).observe(el);
+  });
+  // View All Work: open every project in place, same cards as Our Work
+  const btn = document.getElementById('action-more-btn'), lab = document.getElementById('action-more-label'), box = document.getElementById('all-work');
+  btn.addEventListener('click', () => {
+    const open = box.hidden;
+    if (open && !box.children.length) {
+      document.querySelectorAll('#carousel-track .work-card').forEach(c => {
+        const n = c.cloneNode(true);
+        n.querySelectorAll('iframe').forEach(i => i.setAttribute('loading', 'lazy'));
+        box.appendChild(n);
+      });
+    }
+    box.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    lab.textContent = open ? 'Show Less' : 'View All Work';
+    if (!open) document.getElementById('examples').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
 </script>
 </body>
 </html>

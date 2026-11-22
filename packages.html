@@ -30,18 +30,32 @@
 <!-- Stripe checkout: re-enable together with stripe-checkout.js below
 <script async src="https://js.stripe.com/v3/"></script> -->
 <style>
+.work-section:not(.expanded) .carousel-wrapper,.work-section:not(.expanded) .carousel-controls{display:none}
+.work-section .snap{max-width:1200px;margin:0 auto}
+.facelift{max-width:1200px;margin:34px auto 0;padding:clamp(22px,3vw,34px);border-radius:1.5rem;border:1px solid rgba(255,255,255,.1)}
+.facelift-head{max-width:760px;margin-bottom:22px}
+.facelift-head h3{font-size:clamp(22px,2.6vw,30px);margin:6px 0 8px;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.facelift-head p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+.eyebrow-sm{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ba-col{min-width:0}
+.ba-tag{display:inline-block;margin-bottom:10px;padding:4px 12px;border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff}
+.ba-tag.after{background:rgba(0,255,150,.14);border-color:rgba(0,255,150,.45);color:#00ff96}
+.ba-media{border:1px solid rgba(255,255,255,.1);border-radius:1rem;overflow:hidden;margin-top:0}
+.shot-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:1rem}
+.shot-strip::-webkit-scrollbar{display:none}
+.shot{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:16/9;margin:0;border-radius:1rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#05070d}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shot-mobile img{object-fit:contain}
+.shot-dots{display:flex;justify-content:center;gap:7px;margin-top:12px}
+.shot-dots button{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s,transform .3s}
+.shot-dots button.on{background:#00ff96;transform:scale(1.25)}
+@media (max-width:760px){.ba-grid{grid-template-columns:1fr}}
 .live{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:1rem;width:100%;background:#0b0b10}
 .live img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .live iframe{position:absolute;top:0;left:0;width:1280px;height:720px;border:0;transform-origin:0 0;pointer-events:none;opacity:0;transition:opacity .6s}
 .live iframe.ready{opacity:1}
-#action-more-btn{font:inherit;cursor:pointer}
-#action-more-btn svg{transition:transform .4s var(--ease)}
-#action-more-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.all-work{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:34px}
-.all-work[hidden]{display:none}
-.all-work .work-card{flex:none}
-@media (max-width:760px){.all-work{grid-template-columns:1fr}}
-</style>
+@media (max-width:760px){</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -177,17 +191,69 @@
 <section class="sec tight work-section" id="work-section">
   <div class="wrap">
     <div class="head rv"><h2>Our <em class="s grad">Work</em></h2><p class="sub">Real businesses. Real results. Watch the demos and see what we build.</p></div>
-    <div class="carousel-wrapper rv">
-      <div class="carousel-track" id="carousel-track"><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Matrix Medical</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full e-commerce buildout for a Minneapolis medical equipment supplier. Custom menus, advanced product filters, wishlist, low-stock alerts, and a seamless buying experience for healthcare facilities nationwide.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1113737425?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Matrix Medical"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pure Mechanical LLC</h3><span class="year">2023</span></div></div><p class="work-card-desc">Professional website for a mechanical services company. Clean, responsive design built to generate leads and communicate reliability to residential and commercial clients.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1114407869?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pure Mechanical LLC"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Rich Nerdz</h3><span class="year">2025</span></div></div><p class="work-card-desc">Streetwear brand identity and e-commerce experience. Bold visuals, custom graphics, and a shopping experience that matches the energy of the brand.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115361252?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Rich Nerdz"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Car Club Rental</h3><span class="year">2023</span></div></div><p class="work-card-desc">Premium vehicle rental platform designed to showcase an exotic and luxury fleet. Built for seamless online bookings with a high-end look and feel that converts browsers into renters.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115624298?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Car Club Rental"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Ocean Wholesale</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full-scale wholesale marketplace for a brand that creates waves. Complete branding, product catalog architecture, and a buyer-first shopping experience built to scale.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115631198?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ocean Wholesale"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Mow Bros</h3><span class="year">2023</span></div></div><p class="work-card-desc">Lead-generating website for a Minnesota landscaping company. Responsive design with service pages, galleries, and a booking flow that turns local search traffic into booked jobs year-round.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115635752?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Mow Bros"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Jappy</h3><span class="year">2024</span></div></div><p class="work-card-desc">Sleek brand website with a distinct identity and a modern digital presence. Crafted to capture the brand's personality and connect with its audience online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115639888?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Jappy"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Moneybag Exotics</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full brand experience for a streetwear label built on ambition. Custom logos, moving images, animations, and fonts — from their sold-out first drop to an ongoing collection that lives at the intersection of risk and style.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115645900?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Moneybag Exotics"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pet Beds For You</h3><span class="year">2019</span></div></div><p class="work-card-desc">E-commerce website for a pet products brand. Clean product presentation, intuitive navigation, and a design that communicates trust and warmth to pet owners shopping online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115648562?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pet Beds For You"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>VoxVera.io</h3><span class="year">2024</span></div></div><p class="work-card-desc">End-to-end brand launch for a next-generation AI audio dubbing platform. Pitch deck, logo, full site design, and project coordination — concept to launch, executed flawlessly.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115659680?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VoxVera"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>LumaSkin</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full visual identity, branding, product imagery, and site design for a skincare and wellness device brand. A seamless online shopping experience highlighting promotions, product details, and customer engagement.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115663555?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="LumaSkin"></iframe></div></article></div>
+    <div class="grid g3 snap" data-dots style="max-width:1200px;margin:0 auto">
+      <article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-ambi-wine-bar/" target="_blank" rel="noopener" style="display:contents">
+        <div class="live" data-live><img src="assets/work/ambi-wine-bar.webp" alt="Ambi Wine Bar & Desserts homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-ambi-wine-bar/" title="Ambi Wine Bar & Desserts homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
+        <div style="padding:1.5rem;flex-shrink:0">
+          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Professional Design</span>
+          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Ambi Wine Bar &amp; Desserts</h3>
+          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">One-page site for Anoka's first wine bar. Custom brand identity, cinematic hero film, layered parallax, and local SEO optimization.</p>
+          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
+            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-constant-growth-solutions/" target="_blank" rel="noopener" style="display:contents">
+        <div class="live" data-live><img src="assets/work/cgs-insurance.webp" alt="CGS Insurance homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-constant-growth-solutions/" title="CGS Insurance homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
+        <div style="padding:1.5rem;flex-shrink:0">
+          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Insurance &amp; Consulting</span>
+          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">CGS Insurance</h3>
+          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">Full insurance and consulting site for Constant Growth Solutions. Policy menu for individuals and businesses, partner pages, quote flow, and SEO built in.</p>
+          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
+            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-connected-tulum/" target="_blank" rel="noopener" style="display:contents">
+        <div class="live" data-live><img src="assets/work/connected-tulum.webp" alt="Connected Tulum villa" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-connected-tulum/" title="Connected Tulum villa live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
+        <div style="padding:1.5rem;flex-shrink:0">
+          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Concierge &amp; Events</span>
+          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Connected Tulum</h3>
+          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">Villas, concierge, and events site for Tulum. Luxury villa collection with WhatsApp booking, event tickets and tables, and a design that feels like the destination.</p>
+          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
+            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a></article>
     </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="prev-btn" type="button" aria-label="Previous project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
-      <button class="carousel-btn" id="next-btn" type="button" aria-label="Next project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+    <div class="facelift card rv">
+      <div class="facelift-head"><span class="eyebrow-sm">Store Facelift</span><h3>Before &amp; After: Ocean Wholesale</h3><p>Not every store needs a rebuild. We kept the platform, then restyled the whole experience with custom code: age gate, video-led homepage, brand and category showcases, and a cleaner catalog.</p></div>
+      <div class="ba-grid">
+        <div class="ba-col"><span class="ba-tag">Before</span><div class="video-wrap ba-media"><iframe src="https://player.vimeo.com/video/1115631198?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Ocean Wholesale before"></iframe></div></div>
+        <div class="ba-col"><span class="ba-tag after">After</span>
+          <div class="shot-gallery" role="region" aria-label="Ocean Wholesale after: website screenshots">
+            <div class="shot-strip">
+              <figure class="shot"><img src="assets/work/ocean-wholesale-home.webp" alt="Ocean Wholesale homepage with featured brand tiles and hero video" width="1200" height="629" loading="lazy" decoding="async"></figure>
+              <figure class="shot"><img src="assets/work/ocean-wholesale-brands.webp" alt="Ocean Wholesale shop by experience section" width="1200" height="629" loading="lazy" decoding="async"></figure>
+              <figure class="shot"><img src="assets/work/ocean-wholesale-collection.webp" alt="Ocean Wholesale collection page" width="1200" height="468" loading="lazy" decoding="async"></figure>
+              <figure class="shot"><img src="assets/work/ocean-wholesale-product.webp" alt="Ocean Wholesale product page" width="1200" height="629" loading="lazy" decoding="async"></figure>
+              <figure class="shot"><img src="assets/work/ocean-wholesale-about.webp" alt="Ocean Wholesale about page" width="1200" height="629" loading="lazy" decoding="async"></figure>
+              <figure class="shot shot-mobile"><img src="assets/work/ocean-wholesale-mobile.webp" alt="Ocean Wholesale mobile homepage" width="500" height="723" loading="lazy" decoding="async"></figure>
+            </div>
+            <div class="shot-dots" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="view-more-wrap">
       <button id="view-more-btn" class="btn btn-glass" type="button" aria-expanded="false" aria-controls="carousel-track">
         <span id="btn-label">View All Work</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="width:14px;height:14px"><path d="m3 6 5 5 5-5"/></svg>
       </button>
+    </div>
+    <div class="carousel-wrapper rv">
+      <div class="carousel-track" id="carousel-track"><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Matrix Medical</h3><span class="year">2022</span></div></div><p class="work-card-desc">Full e-commerce buildout for a Minneapolis medical equipment supplier. Custom menus, advanced product filters, wishlist, low-stock alerts, and a seamless buying experience for healthcare facilities nationwide.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1113737425?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Matrix Medical"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pure Mechanical LLC</h3><span class="year">2023</span></div></div><p class="work-card-desc">Professional website for a mechanical services company. Clean, responsive design built to generate leads and communicate reliability to residential and commercial clients.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1114407869?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pure Mechanical LLC"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Rich Nerdz</h3><span class="year">2025</span></div></div><p class="work-card-desc">Streetwear brand identity and e-commerce experience. Bold visuals, custom graphics, and a shopping experience that matches the energy of the brand.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115361252?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Rich Nerdz"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Car Club Rental</h3><span class="year">2023</span></div></div><p class="work-card-desc">Premium vehicle rental platform designed to showcase an exotic and luxury fleet. Built for seamless online bookings with a high-end look and feel that converts browsers into renters.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115624298?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Car Club Rental"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Mow Bros</h3><span class="year">2023</span></div></div><p class="work-card-desc">Lead-generating website for a Minnesota landscaping company. Responsive design with service pages, galleries, and a booking flow that turns local search traffic into booked jobs year-round.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115635752?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Mow Bros"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Jappy</h3><span class="year">2024</span></div></div><p class="work-card-desc">Sleek brand website with a distinct identity and a modern digital presence. Crafted to capture the brand's personality and connect with its audience online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115639888?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Jappy"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Moneybag Exotics</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full brand experience for a streetwear label built on ambition. Custom logos, moving images, animations, and fonts — from their sold-out first drop to an ongoing collection that lives at the intersection of risk and style.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115645900?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Moneybag Exotics"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>Pet Beds For You</h3><span class="year">2019</span></div></div><p class="work-card-desc">E-commerce website for a pet products brand. Clean product presentation, intuitive navigation, and a design that communicates trust and warmth to pet owners shopping online.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115648562?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Pet Beds For You"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>VoxVera.io</h3><span class="year">2024</span></div></div><p class="work-card-desc">End-to-end brand launch for a next-generation AI audio dubbing platform. Pitch deck, logo, full site design, and project coordination — concept to launch, executed flawlessly.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115659680?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="VoxVera"></iframe></div></article><article class="card work-card"><div class="work-card-header"><div class="work-card-meta"><h3>LumaSkin</h3><span class="year">2025</span></div></div><p class="work-card-desc">Full visual identity, branding, product imagery, and site design for a skincare and wellness device brand. A seamless online shopping experience highlighting promotions, product details, and customer engagement.</p><div class="video-wrap"><iframe src="https://player.vimeo.com/video/1115663555?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="LumaSkin"></iframe></div></article></div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn" type="button" aria-label="Previous project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <button class="carousel-btn" id="next-btn" type="button" aria-label="Next project"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
     </div>
   </div>
 </section>
@@ -235,46 +301,6 @@
         <figcaption><span class="av" aria-hidden="true">JS</span><div><b>Japnoor Singh</b><span>★★★★★ · Google</span></div></figcaption>
       </figure>
     </div>
-  </div>
-</section>
-<section class="sec" id="examples">
-  <div class="wrap">
-    <div class="head rv"><h2>See It in <em class="s grad">Action</em></h2><p class="sub">Here's what a professional VAURA site looks like in the real world.</p></div>
-    <div class="grid g3 snap" data-dots style="max-width:1200px;margin:0 auto">
-      <article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-ambi-wine-bar/" target="_blank" rel="noopener" style="display:contents">
-        <div class="live" data-live><img src="assets/work/ambi-wine-bar.webp" alt="Ambi Wine Bar & Desserts homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-ambi-wine-bar/" title="Ambi Wine Bar & Desserts homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
-        <div style="padding:1.5rem;flex-shrink:0">
-          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Professional Design</span>
-          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Ambi Wine Bar &amp; Desserts</h3>
-          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">One-page site for Anoka's first wine bar. Custom brand identity, cinematic hero film, layered parallax, and local SEO optimization.</p>
-          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
-            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </div>
-        </div>
-      </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-constant-growth-solutions/" target="_blank" rel="noopener" style="display:contents">
-        <div class="live" data-live><img src="assets/work/cgs-insurance.webp" alt="CGS Insurance homepage" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-constant-growth-solutions/" title="CGS Insurance homepage live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
-        <div style="padding:1.5rem;flex-shrink:0">
-          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Insurance &amp; Consulting</span>
-          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">CGS Insurance</h3>
-          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">Full insurance and consulting site for Constant Growth Solutions. Policy menu for individuals and businesses, partner pages, quote flow, and SEO built in.</p>
-          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
-            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </div>
-        </div>
-      </a></article><article class="card rv" style="overflow:hidden;border-radius:1.5rem;display:flex;flex-direction:column;min-height:360px;border:1px solid rgba(255,255,255,0.1)"><a href="https://vauraagency.github.io/site-connected-tulum/" target="_blank" rel="noopener" style="display:contents">
-        <div class="live" data-live><img src="assets/work/connected-tulum.webp" alt="Connected Tulum villa" width="1280" height="720" decoding="async"><iframe src="https://vauraagency.github.io/site-connected-tulum/" title="Connected Tulum villa live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
-        <div style="padding:1.5rem;flex-shrink:0">
-          <span style="font-size:0.8rem;color:rgba(255,255,255,0.55);font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Concierge &amp; Events</span>
-          <h3 style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00ff96,#00ccff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0.5rem 0 0.75rem">Connected Tulum</h3>
-          <p style="font-size:0.9rem;line-height:1.65;color:rgba(255,255,255,0.65);margin:0 0 1rem">Villas, concierge, and events site for Tulum. Luxury villa collection with WhatsApp booking, event tickets and tables, and a design that feels like the destination.</p>
-          <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.55rem 1rem;border-radius:999px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:0.82rem;font-weight:600">
-            Visit site <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" style="width:12px;height:12px"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </div>
-        </div>
-      </a></article>
-    </div>
-    <div class="view-more-wrap"><button id="action-more-btn" class="btn btn-glass" type="button" aria-expanded="false" aria-controls="all-work"><span id="action-more-label">View All Work</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="width:14px;height:14px"><path d="m3 6 5 5 5-5"/></svg></button></div>
-    <div class="all-work" id="all-work" hidden></div>
   </div>
 </section>
 </main>
@@ -455,21 +481,15 @@
     fit(el);
     new ResizeObserver(() => fit(el)).observe(el);
   });
-  // View All Work: open every project in place, same cards as Our Work
-  const btn = document.getElementById('action-more-btn'), lab = document.getElementById('action-more-label'), box = document.getElementById('all-work');
-  btn.addEventListener('click', () => {
-    const open = box.hidden;
-    if (open && !box.children.length) {
-      document.querySelectorAll('#carousel-track .work-card').forEach(c => {
-        const n = c.cloneNode(true);
-        n.querySelectorAll('iframe').forEach(i => i.setAttribute('loading', 'lazy'));
-        box.appendChild(n);
-      });
+  document.querySelectorAll('.shot-gallery').forEach(g => {
+    const strip = g.querySelector('.shot-strip'), dots = g.querySelector('.shot-dots'), n = strip.children.length;
+    for (let i = 0; i < n; i++) {
+      const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Show screenshot ' + (i + 1));
+      b.addEventListener('click', () => strip.scrollTo({ left: strip.children[i].offsetLeft - strip.children[0].offsetLeft, behavior: 'smooth' }));
+      dots.appendChild(b);
     }
-    box.hidden = !open;
-    btn.setAttribute('aria-expanded', String(open));
-    lab.textContent = open ? 'Show Less' : 'View All Work';
-    if (!open) document.getElementById('examples').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const sync = () => { const i = Math.round(strip.scrollLeft / (strip.clientWidth + 12)); [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i)); };
+    strip.addEventListener('scroll', sync, { passive: true }); sync();
   });
 })();
 </script>

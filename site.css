@@ -501,3 +501,39 @@ footer{border-top:1px solid var(--line);padding:56px 0 calc(40px + env(safe-area
   .photo-float-col{animation:none}
   .hero.sub .eyebrow{opacity:1}
 }
+
+/* service rows: whole row is a link */
+.svc-a{position:absolute;inset:0;z-index:2;border-radius:2px}
+.svc-a:focus-visible{outline:2px solid var(--text);outline-offset:-2px}
+.sec article[id]{scroll-margin-top:110px}
+/* contact page */
+.contact-wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:start;max-width:1200px;margin:0 auto}
+.cform{padding:clamp(22px,3vw,36px);border-radius:1.5rem;border:1px solid var(--line-2)}
+.cform h2{margin:0 0 6px;font-size:clamp(26px,3vw,38px)}
+.cform .lead{color:var(--muted);margin:0 0 24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fld label,.fld legend{font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.fld input,.fld select,.fld textarea{font:inherit;color:var(--text);background:rgba(255,255,255,.05);border:1px solid var(--line-2);border-radius:12px;padding:13px 14px;width:100%}
+.fld textarea{min-height:130px;resize:vertical}
+.fld select option{color:#111}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid rgba(61,245,164,.6);outline-offset:1px;border-color:transparent}
+.pref{border:0;padding:0;margin:0 0 18px}
+.pref .opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.pref label{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);cursor:pointer;font-size:14px;color:var(--text);letter-spacing:0}
+.pref input{position:absolute;opacity:0;pointer-events:none}
+.pref label:has(input:checked){background:rgba(61,245,164,.14);border-color:rgba(61,245,164,.55)}
+.pref label:has(input:focus-visible){outline:2px solid var(--text)}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.cform .btn{width:100%;justify-content:center}
+.fstatus{margin-top:14px;font-size:15px;min-height:22px}
+.fstatus.ok{color:#3df5a4}.fstatus.err{color:#ff8a8a}
+.thanks{display:none;text-align:left}
+.thanks.show{display:block}
+.quick{display:grid;gap:14px}
+.quick .qc{padding:22px;border-radius:1.25rem;border:1px solid var(--line-2);display:grid;gap:6px}
+.quick h3{margin:0;font-size:20px}
+.quick p{margin:0 0 8px;color:var(--muted);font-size:15px}
+.quick .btn{justify-content:center}
+@media (max-width:860px){.contact-wrap{grid-template-columns:1fr}}
+@media (max-width:560px){.frow{grid-template-columns:1fr}}
